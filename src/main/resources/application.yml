@@ -3,7 +3,7 @@ WanYueYun:
   #  项目名称（仅修改反馈及验证码功能的名称，其余请自行修改）
   name: "挽悦云"
   #  数据库URL
-  mysql_url: "数据库URL"
+  mysql_url: "localhost"
   #  数据库端口
   mysql_port: 3306
   #  数据库名称
