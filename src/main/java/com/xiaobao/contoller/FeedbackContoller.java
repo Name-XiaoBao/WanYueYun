@@ -34,7 +34,7 @@ public class FeedbackContoller {
     @RequestMapping("/UserFeedback")
     public Json UserFeedback(String email,String Api,String Content,String ContactInformation){
         try {
-            emailUtil.TemplateFeedbackEmail(email,Api,Content+"，联系方式："+ContactInformation);
+            emailUtil.TemplateFeedbackEmail(email,Api,Content,ContactInformation);
             json.json(200,"发送成功",null);
             return json;
         } catch (MessagingException e) {
@@ -52,7 +52,7 @@ public class FeedbackContoller {
     @RequestMapping("/Feedback")
     public Json Feedback(String Content, String ContactInformation) {
         try {
-            emailUtil.TemplateFeedbackEmail("1753147761@qq.com",Name,Content+"，联系方式："+ContactInformation);
+            emailUtil.TemplateFeedbackEmail("1753147761@qq.com",Name,Content,ContactInformation);
             json.json(200,"发送成功",null);
             return json;
         } catch (MessagingException e) {
