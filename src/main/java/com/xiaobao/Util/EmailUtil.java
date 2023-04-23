@@ -107,7 +107,7 @@ public class EmailUtil {
      * @param Content
      * @throws MessagingException
      */
-    public void TemplateFeedbackEmail(String username, String Title,String Content) throws MessagingException {
+    public void TemplateFeedbackEmail(String username, String Title,String Content,String ContactInformation) throws MessagingException {
         //扩展邮件信息类
         MimeMessage mimeMessage = sender.createMimeMessage();
         //添加邮件内容的辅助器
@@ -124,6 +124,7 @@ public class EmailUtil {
         Context context = new Context();
         context.setVariable("Content",Content);
         context.setVariable("Title",Title);
+        context.setVariable("ContactInformation",ContactInformation);
         //生成模板 字符串格式
         String process = templateEngine.process("email/FeedbackEmail.html", context);
         helper.setText(process,true);

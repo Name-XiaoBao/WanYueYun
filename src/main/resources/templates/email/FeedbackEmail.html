@@ -25,6 +25,7 @@
   <h3 style="margin-bottom: 20px;text-align: center" th:text="${Title}">挽悦云</h3>
   <p th:text='|您有一条来自"${Title}"的反馈信息:|'>您有一条来自“挽悦云”的反馈信息：</p>
   <p style="text-indent:2em" th:text="${Content}">邮件内容</p>
+  <p style="text-indent:2em" th:text='|联系方式:${ContactInformation}|'>联系方式</p>
 </div>
 </body>
 </html>
