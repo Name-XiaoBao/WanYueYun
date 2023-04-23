@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.ThirdPartyLoginDao">
+    <!--添加标识到数据库-->
+    <insert id="AddIdentification">
+        INSERT INTO `third_party_login` (username,Identification,UserKey) VALUES (#{username},#{Identification},#{Key});
+    </insert>
+    <select id="username" resultType="com.xiaobao.model.ThirdPartyLogin">
+        select username,Identification from third_party_login where username=#{username}
+    </select>
+    <!--判断账号和标识是否一致-->
+    <select id="username_Identification" resultType="com.xiaobao.model.ThirdPartyLogin">
+        select * from third_party_login where username=#{username} and Identification=#{Identification};
+    </select>
+</mapper>

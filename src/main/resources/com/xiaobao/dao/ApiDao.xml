@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.ApiDao">
+    <!--判断API是否存在-->
+    <select id="Api" resultType="com.xiaobao.model.Api">
+        select * from api where name=#{name} and user=#{username};
+    </select>
+    <!--判断API是否存在-->
+    <select id="api" resultType="com.xiaobao.model.Api">
+        select * from api where name=#{name};
+    </select>
+    <!--添加API-->
+    <insert id="addApi">
+        INSERT INTO `api` (user,pass,name) VALUES (#{username},#{password},#{name});
+    </insert>
+    <!--修改API信息-->
+    <update id="upApi">
+        UPDATE api SET name=#{name} WHERE id=#{id};
+    </update>
+    <!--查询用户API列表-->
+    <select id="apiList" resultType="com.xiaobao.model.Api">
+        select * from api where user=#{username} and pass=#{password};
+    </select>
+    <!--删除API-->
+    <delete id="deapi">
+        delete from api where id=#{id};
+    </delete>
+    <!--修改API表里的用户密码-->
+    <update id="upUserApi">
+        UPDATE api SET pass=#{password} WHERE user=#{username};
+    </update>
+    <!--根据API id查询API信息-->
+    <select id="ApiName" resultType="com.xiaobao.model.Api">
+        select * from api where id=#{id};
+    </select>
+</mapper>

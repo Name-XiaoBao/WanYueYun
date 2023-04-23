@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.FileDao">
+    <!--添加文件直链-->
+    <insert id="addFile">
+        INSERT INTO `file_url` (Api,Url) VALUES (#{Api},#{Url});
+    </insert>
+    <!--查询API文件列表-->
+    <select id="file" resultType="com.xiaobao.model.File">
+        select * from file_url where Api=#{Api};
+    </select>
+    <!--删除API文件-->
+    <delete id="delFile">
+        delete from file_url where Url=#{filename};
+    </delete>
+    <!--删除API所有文件-->
+    <delete id="AllDelFile">
+        delete from file_url where Api=#{Api};
+    </delete>
+</mapper>

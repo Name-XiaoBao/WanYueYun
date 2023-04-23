@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.StartStatisticsDao">
+    <!--判断API是否存在 & 查询API启动次数-->
+    <select id="Api" resultType="com.xiaobao.model.StartStatistics">
+        select * from start_statistics where Api=#{Api};
+    </select>
+    <!--添加API-->
+    <insert id="AddApi">
+        INSERT INTO start_statistics (Api) VALUES (#{Api});
+    </insert>
+    <!--增加启动次数-->
+    <update id="UpApi">
+        UPDATE start_statistics SET Num=Num+1 WHERE Api=#{Api};
+    </update>
+    <!--清空启动次数-->
+    <update id="DelApi">
+        UPDATE start_statistics SET Num=0 WHERE Api=#{Api};
+    </update>
+    <!--删除启动次数的API-->
+    <delete id="del">
+        delete from start_statistics where Api=#{Api};
+    </delete>
+</mapper>

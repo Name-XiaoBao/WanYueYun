@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.RemoteDocumentDao">
+    <!--创建API文档-->
+    <insert id="AddFile">
+        INSERT INTO `remote_document` (Api,Title,Content,UpdateTime) VALUES (#{Api},#{Title},#{Content},#{UpdateTime});
+    </insert>
+    <!--根据ID查询文档-->
+    <select id="File" resultType="com.xiaobao.model.RemoteDocument">
+        select * from remote_document where id=#{id} and Api=#{Api};
+    </select>
+    <!--查询API文档列表-->
+    <select id="FileList" resultType="com.xiaobao.model.RemoteDocument">
+        select * from remote_document where Api=#{Api};
+    </select>
+    <!--修改API文档-->
+    <update id="UpdateFile">
+        UPDATE remote_document SET Jurisdiction=#{Jurisdiction},SecretKey=#{SecretKey},Title=#{title},Content=#{Content},UpdateTime=#{UpdateTime} WHERE id=#{id} and Api=#{Api};
+    </update>
+    <!--删除API文档-->
+    <delete id="DelFile">
+        DELETE FROM remote_document WHERE id=#{id} and Api=#{Api};
+    </delete>
+    <delete id="Del">
+        DELETE FROM remote_document WHERE Api=#{Api};
+    </delete>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.ApiUserDao">
+    <!--判断是否存在该用户-->
+    <select id="user" resultType="com.xiaobao.model.ApiUser">
+        select * from apiuser where NameApi=#{name} and user=#{user};
+    </select>
+    <!--注册-->
+    <insert id="Register">
+        INSERT INTO `apiuser` (NameApi,user,pass) VALUES (#{name},#{user},#{pass});
+    </insert>
+    <!--判断用户名和密码是否一致-->
+    <select id="user_pass" resultType="com.xiaobao.model.ApiUser">
+        select * from apiuser where user=#{user} and pass=#{pass};
+    </select>
+    <!--查询API用户列表-->
+    <select id="Userlist" resultType="com.xiaobao.model.ApiUser">
+        select * from apiuser where NameApi=#{NameApi};
+    </select>
+    <!--查询API用户信息-->
+    <select id="userInfo" resultType="com.xiaobao.model.ApiUser">
+        select * from apiuser where user=#{user} and pass=#{pass} and NameApi=#{name};
+    </select>
+    <!--修改API用户密码-->
+    <update id="uppass">
+        UPDATE apiuser SET pass=#{pass} WHERE id=#{id};
+    </update>
+    <!--修改API用户积分-->
+    <update id="upIntegral">
+        UPDATE apiuser SET Integral=#{Integral} WHERE id=#{id};
+    </update>
+    <!--修改API用户会员日期-->
+    <update id="upMembershipTime">
+        UPDATE apiuser SET MembershipTime=#{MembershipTime} WHERE id=#{id};
+    </update>
+    <!--删除API用户-->
+    <delete id="deluser">
+        DELETE FROM apiuser WHERE NameApi=#{NameApi} and user=#{user};
+    </delete>
+    <!--删除API的所有用户-->
+    <delete id="delapiuser">
+        DELETE FROM apiuser WHERE NameApi=#{NameApi};
+    </delete>
+</mapper>

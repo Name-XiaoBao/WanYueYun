@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>用户反馈</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../css/public.css" media="all">
+  <script src="../../lib/vue.min.js"></script>
+  <style>
+    .btn{
+      margin-left: 18%;
+    }
+    @media (max-width: 768px) {
+      .btn{
+        margin-left: 40%;
+      }
+    }
+    .text{
+      color: red;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="layuimini-container" id="app">
+  <div class="layuimini-main">
+    <div class="layui-form-item" style="margin-right: 15%">
+      <label class="layui-form-label">反馈内容</label>
+      <div class="layui-input-inline">
+        <textarea id="text" required lay-verify="required" placeholder="请输入内容，遵循html语法" class="layui-textarea" v-model="text"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item" style="margin-right: 15%">
+      <label class="layui-form-label">联系方式</label>
+      <div class="layui-input-inline">
+        <input id="contact" type="text" required lay-verify="required" v-model="contact" placeholder="QQ、微信、电话" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <button class="layui-btn layui-btn-radius layui-btn-normal btn" @click="sendout">发送</button>
+  </div>
+</div>
+<script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../lib/config.js"></script>
+<script src="../../lib/axios.min.js"></script>
+<script src="../../js/lay-module/layuimini/miniTab.js"></script>
+<script>
+  new Vue({
+    el : "#app",
+    data:{
+      text:null,
+      contact:null
+    },
+    methods : {
+      sendout(){
+        if (document.getElementById('text').value==""  || document.getElementById('contact').value==""){
+          layer.msg("请输入完整");
+        }else {
+          axios.get(Url+'Feedback?Content='+this.text+'&ContactInformation='+this.contact).then(res=>{
+            layer.msg(res.data.msg);
+          }).catch(e=>{
+            layer.msg(e.response.data.message);
+          });;
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

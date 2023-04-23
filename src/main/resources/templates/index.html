@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>挽悦云</title>
+    <meta itemprop="name" content="挽悦云免费后台">
+    <meta name="description" itemprop="description" content="一款完全免费的云后台">
+    <meta itemprop="image" content="./images/logo.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <script src="./lib/vue.min.js"></script>
+    <link rel="stylesheet" href="./lib/layui-v2.6.3/css/layui.css" media="all">
+    <script src="./lib/layui-v2.6.3/layui.js"></script>
+    <link rel="icon" href="./images/favicon.ico">
+    <!--百度-->
+    <meta name="baidu-site-verification" content="codeva-qm4WkbyK3z" />
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-image: linear-gradient(to right, #b5d3fd, rgba(255, 0, 149, 0.2), rgba(0, 247, 255, 0.2));
+        }
+        .Computer{
+            margin-top: 6%;
+            margin-left: 10%;
+            float: left;
+        }
+        .Computer img{
+            width: 45%;
+            transform: skewY( 2deg );
+            box-shadow:10px 10px 5px #888888;
+        }
+        .Computer div{
+            float: right;
+            margin-right: 10%;
+            margin-top: 12%;
+            display: block;
+        }
+        .Android{
+            display: none;
+        }
+        @media (max-width: 768px) {
+            *{
+                margin: 0 auto;
+                padding: 0;
+                list-style: none;
+            }
+            body{
+                background: #d8d8d8;
+            }
+            .Computer{
+                display: none;
+            }
+            .Android{
+                display: block;
+            }
+            .logo{
+                width: 20%;
+                margin-top: 8%;
+            }
+            .Bottom{
+                background: #2f2f2f;
+                padding: 5%;
+                color: #fff;
+            }
+            .links a{
+                color: #d8d8d8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="Computer">
+            <img src="./images/home.png">
+            <div>
+                <h1>挽悦云——免费云后台</h1>
+                <hr>
+                <h3>挽悦云是一款免费的云后台，让您可以更好的管理您的数据</h3>
+                <h3>我们在此承诺永久免费</h3>
+                <h3>如果您有什么建议，请立即反馈与我们</h3>
+                <h3>我们会第一时间处理您的建议</h3>
+                <hr>
+                <button class="layui-btn layui-btn-lg layui-btn-radius layui-btn-primary layui-border-blue" onclick="window.location.href ='./main/login.html'">立即使用</button>
+                <button class="layui-btn layui-btn-lg layui-btn-radius layui-btn-primary layui-border-orange" onclick="window.location.href ='./main/page/InterfaceDocument.html'">接口文档</button>
+            </div>
+        </div>
+        <div class="Android">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-panel">
+                        <div style="text-align: center">
+                            <img src="./images/logo.png" class="logo">
+                            <h2>挽悦云</h2>
+                            <p style="color: #9c9da0;margin: 2%">{{androidversion}}版本</p>
+                            <button class="layui-btn layui-btn-radius layui-btn-primary layui-border-blue" @click="dow">立即下载</button>
+                            <button class="layui-btn layui-btn-radius layui-btn-primary layui-border-orange" onclick="window.location.href ='./main/page/InterfaceDocument.html'">接口文档</button>
+                            <p style="margin: 5%"><a href="./main/login.html">切换网页版</a></p>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">更新内容：</div>
+                        <pre class="layui-card-body">{{versionupdatecontent}}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header">软件介绍：</div>
+                    <div class="layui-card-body">
+                        <p>挽悦云是由小暴技术团队精心开发的免费云后台服务。该服务提供了用户管理、云文档编辑等丰富的功能。</p>
+                        <p>除此之外，挽悦云后台还拥有简洁易用的界面设计和稳定高效的服务性能，为用户提供了优质的云端服务体验。</p>
+                        <p>后台开发时间为2022年12月10日</p>
+                        <p>上线时间为2023年02月15日</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">联系我们：</div>
+                        <div class="layui-card-body">
+                            <p>官方Q群：816467119</p>
+                            <p>总负责人QQ：1753147761</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Bottom">
+                <h4>友情链接：</h4>
+                <div class="links">
+                    <span v-for="linkslist in links">
+                        <a :href="''+linkslist.url">{{linkslist.title}}</a>
+                        <span style="color: red;margin: 5px">☆</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./lib/axios.min.js"></script>
+    <script>
+        layui.use('element', function(){
+            var element = layui.element;
+
+            //…
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                androidversion:null,
+                androiddownload:null,
+                versionupdatecontent:null,
+                links:null
+            },
+            created(){
+                axios.get('./Edition').then(res=>{
+                    this.webedition=res.data.data.webEdition;
+                    this.androidversion=res.data.data.androidVersion;
+                    this.androiddownload=res.data.data.androidDownload;
+                    this.versionupdatecontent=res.data.data.versionUpdateContent;
+                });
+                axios.get('./links').then(res=>{
+                    this.links=res.data.data;
+                });
+            },
+            methods:{
+                dow(){
+                    window.location.href = this.androiddownload
+                }
+            }
+        });
+    </script>
+</body>
+</html>

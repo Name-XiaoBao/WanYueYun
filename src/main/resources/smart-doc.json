@@ -1,0 +1,24 @@
+{
+  "serverUrl": "http://wanyue.xbnb666.top",
+  "allInOne": true,
+  "coverOld": true,
+  "framework": "spring",
+  "outPath": "src/main/resources/static/doc",
+  "style": "xt256",
+  "createDebugPage": true,
+  "sortByTitle":false,
+  "allInOneDocFileName":"index.html",
+  "ignoreRequestParams":[
+    "com.xiaobao.model.Api",
+    "com.xiaobao.model.User"
+  ],
+  "revisionLogs": [
+    {
+      "version": "1.0",
+      "revisionTime": "2023-03-12",
+      "status": "创建",
+      "author": "小暴",
+      "remarks": "挽悦云接口后台文档"
+    }
+  ]
+}

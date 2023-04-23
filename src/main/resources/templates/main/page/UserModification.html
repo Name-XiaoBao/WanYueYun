@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>用户修改</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../css/public.css" media="all">
+  <script src="../../lib/vue.min.js"></script>
+  <style>
+    .btn{
+      margin-left: 18%;
+    }
+    @media (max-width: 768px) {
+      .btn{
+        margin-left: 40%;
+      }
+    }
+    .text{
+        color: red;
+        font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="layuimini-container" id="app">
+  <div class="layuimini-main">
+        <div class="layui-form-item" style="margin-right: 15%">
+          <label class="layui-form-label">I&emsp;&emsp;D</label>
+          <div class="layui-input-inline">
+            <input type="text" required lay-verify="required" autocomplete="off" class="layui-input" v-model="id" readonly="readonly">
+          </div>
+        </div>
+        <div class="layui-form-item" style="margin-right: 15%">
+          <label class="layui-form-label">用户名</label>
+          <div class="layui-input-inline">
+            <input type="text" required lay-verify="required" autocomplete="off" class="layui-input" v-model="user" readonly="readonly">
+          </div>
+        </div>
+        <div class="layui-form-item" style="margin-right: 15%">
+          <label class="layui-form-label">密&emsp;码</label>
+          <div class="layui-input-inline">
+            <input type="text" required lay-verify="required" autocomplete="off" class="layui-input" v-model="pass">
+            <span class="text">注：密码需单独修改</span>
+          </div>
+        </div>
+        <div class="layui-form-item" style="margin-right: 15%">
+          <label class="layui-form-label">积&emsp;分</label>
+          <div class="layui-input-inline">
+            <input type="text" required lay-verify="required" autocomplete="off" class="layui-input" v-model="integral">
+          </div>
+        </div>
+        <div class="layui-form-item" style="margin-right: 15%">
+          <label class="layui-form-label">会&emsp;员</label>
+          <div class="layui-input-inline">
+            <input type="datetime-local" required lay-verify="required" autocomplete="off" class="layui-input" v-model="member">
+          </div>
+        </div>
+        <button class="layui-btn layui-btn-radius layui-btn-normal btn" @click="preservation">保存</button>
+  </div>
+</div>
+<script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../lib/config.js"></script>
+<script src="../../lib/axios.min.js"></script>
+<script src="../../js/lay-module/layuimini/miniTab.js"></script>
+<script>
+  new Vue({
+    el : "#app",
+    data:{
+      id:null,
+      user:null,
+      pass:null,
+      integral:null,
+      member:null
+    },
+    methods : {
+        preservation(){
+            var paras = decodeURIComponent(location.search); //search获得地址中的参数
+            var result = paras.match(/[^\?&]*=[^&]*/g); //match是字符串中符合的字段一个一个取出来，result中的值为['login=xx','table=admin']
+            paras = {};
+            for (i in result) {
+                var temp = result[i].split('=');
+                paras[temp[0]] = temp[1];
+            }
+            var name = paras.name;
+            var user = paras.user;
+            var pass = paras.pass;
+            axios.get(Url+'session').then(res=> {
+                var username=res.data.data.user;
+                var password=res.data.data.pass;
+                if (pass==this.pass){
+                    axios.get(Url+'api/upIntegral?username=' + username + '&password=' + password + '&name=' + name + '&id=' + this.id + '&user=' + user + '&pass=' + pass + '&Integral=' + this.integral).then(res=> {
+                        if (res.data.code==200){
+                            axios.get(Url+'api/upMembershipTime?username=' + username + '&password=' + password + '&name=' + name + '&id=' + this.id + '&user=' + user + '&pass=' + pass + '&MembershipTime=' + this.member).then(res=> {
+                                if (res.data.code==200){
+                                    layer.confirm(res.data.msg+'！点击返回用户列表<br>注：需手动刷新用户管理页面', {
+                                        btn: ['确定'] //按钮
+                                    }, function(){
+                                        //点击确定后的方法
+                                        layui.use(['miniTab'], function () {
+                                            var miniTab = layui.miniTab;
+                                            miniTab.deleteCurrentByIframe();
+                                        });
+                                    });
+                                }else {
+                                    layer.msg("积分"+res.data.msg);
+                                }
+                            });
+                        }else {
+                            layer.msg("积分"+res.data.msg);
+                        }
+                    });
+                }else {
+                    axios.get(Url+'api/UpPass?username=' + username + '&password=' + password + '&name=' + name + '&id=' + this.id + '&user=' + user + '&pass=' + pass + '&Newpass=' + this.pass).then(res=> {
+                        if (res.data.code==200){
+                            axios.get(Url+'api/upIntegral?username=' + username + '&password=' + password + '&name=' + name + '&id=' + this.id + '&user=' + user + '&pass=' + this.pass + '&Integral=' + this.integral).then(res=> {
+                                if (res.data.code==200){
+                                    axios.get(Url+'api/upMembershipTime?username=' + username + '&password=' + password + '&name=' + name + '&id=' + this.id + '&user=' + user + '&pass=' + this.pass + '&MembershipTime=' + this.member).then(res=> {
+                                        if (res.data.code==200){
+                                            layer.confirm(res.data.msg+'！点击返回用户列表<br>注：需手动刷新用户管理页面', {
+                                                btn: ['确定'] //按钮
+                                            }, function(){
+                                                //点击确定后的方法
+                                                layui.use(['miniTab'], function () {
+                                                    var miniTab = layui.miniTab;
+                                                    miniTab.deleteCurrentByIframe();
+                                                });
+                                            });
+                                        }else {
+                                            layer.msg("积分"+res.data.msg);
+                                        }
+                                    });
+                                }else {
+                                    layer.msg("积分"+res.data.msg);
+                                }
+                            });
+                        }else {
+                            layer.msg("密码"+res.data.msg);
+                        }
+                    });
+                }
+            });
+        }
+    },
+    created() {
+      var paras = decodeURIComponent(location.search); //search获得地址中的参数
+      var result = paras.match(/[^\?&]*=[^&]*/g); //match是字符串中符合的字段一个一个取出来，result中的值为['login=xx','table=admin']
+      paras = {};
+      for (i in result) {
+        var temp = result[i].split('=');
+        paras[temp[0]] = temp[1];
+      }
+      var name = paras.name;
+      var user = paras.user;
+      var pass = paras.pass;
+      axios.get(Url+'session').then(res=> {
+        axios.get(Url+'api/UserInfo?username=' + res.data.data.user + '&name=' + name + '&user=' + user + '&pass=' +pass).then(res=> {
+          this.id=res.data.data.id;
+          this.user=res.data.data.user;
+          this.pass=res.data.data.pass;
+          this.integral=res.data.data.integral;
+          this.member=res.data.data.membershipTime;
+        });
+      });
+    }
+  })
+</script>
+</body>
+</html>

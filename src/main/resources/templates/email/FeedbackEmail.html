@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title th:text="${Title}">挽悦云</title>
+  <style>
+    body{
+      background: #e8e8e8;
+    }
+    .box{
+      margin: 20px;
+      border-radius: 10px;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid #ccc;
+    }
+    .box p{
+      padding-left: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h3 style="margin-bottom: 20px;text-align: center" th:text="${Title}">挽悦云</h3>
+  <p th:text='|您有一条来自"${Title}"的反馈信息:|'>您有一条来自“挽悦云”的反馈信息：</p>
+  <p style="text-indent:2em" th:text="${Content}">邮件内容</p>
+</div>
+</body>
+</html>

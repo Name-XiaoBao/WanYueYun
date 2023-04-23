@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>挽悦云接口文档</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <script src="../../lib/vue.min.js"></script>
+  <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+  <style>
+    body{
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+<div id="app"><div class="layui-row layui-col-space15" style="margin:10px">
+    <div class="layui-col-md3" v-for="b in a">
+      <div class="layui-card">
+        <div class="layui-card-header">{{b.title}}</div>
+        <div class="layui-card-body" v-html="b.content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../lib/axios.min.js"></script>
+<script>
+  new Vue({
+    el:"#app",
+    data:{
+      a:null
+    },
+    created(){
+      axios.get('/Interface').then(res=>{
+        console.log(res.data);
+        this.a=res.data.data
+      })
+    }
+  });
+</script>
+</body>
+</html>

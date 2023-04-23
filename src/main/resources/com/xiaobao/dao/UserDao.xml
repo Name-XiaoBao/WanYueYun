@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.UserDao">
+    <!--判断是否存在该用户-->
+    <select id="user" resultType="com.xiaobao.model.User">
+        select * from user where user=#{user};
+    </select>
+    <!--注册-->
+    <insert id="Register">
+        INSERT INTO `user` (user,pass,Jurisdiction) VALUES (#{username},#{password},1);
+    </insert>
+    <!--判断用户名和密码是否一致-->
+    <select id="user_pass" resultType="com.xiaobao.model.User">
+        select * from user where user=#{user} and pass=#{pass};
+    </select>
+    <!--修改用户密码-->
+    <update id="upuser">
+        UPDATE user SET pass=#{password} WHERE user=#{username};
+    </update>
+</mapper>

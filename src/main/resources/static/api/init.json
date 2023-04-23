@@ -1,0 +1,45 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/welcome.html"
+  },
+  "logoInfo": {
+    "title": "挽悦云",
+    "image": "../images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "首页",
+      "icon": "fa fa-home",
+      "href": "page/welcome.html",
+      "target": "_self"
+    },
+    {
+      "title": "API管理",
+      "icon": "fa fa-info",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "我的API",
+          "href": "page/api-list.html",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "接口文档",
+      "icon": "fa fa-book",
+      "href": "page/InterfaceDocument.html",
+      "target": "_self"
+    },
+    {
+      "title": "我要反馈",
+      "icon": "fa fa-envelope",
+      "href": "page/Feedback.html",
+      "target": "_self"
+    }
+  ]
+}

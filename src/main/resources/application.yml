@@ -1,0 +1,58 @@
+server:
+  port: 80   # 端口
+  servlet:
+    context-path: / # 项目路径
+# API文件的路径
+web:
+  upload-path: "路径"
+# 连接数据库
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  mail:
+    # SMTP服务器
+    host: smtp.qq.com
+    # 发送验证码邮箱
+    username: 邮箱
+    # 授权码
+    password: 邮箱授权码
+    # 编码
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/数据库名称?serverTimezone=GMT%2b8
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: 数据库账号
+    password: 数据库密码
+  jackson: # 格式化时间
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    static-path-pattern: /**
+  #配置页面模板
+  thymeleaf:
+    prefix: classpath:/templates/
+    # 关闭Thymeleaf的缓存
+    cache: false
+  resources:
+    static-locations: classpath:/static,classpath:/templates,file:${web.upload-path}
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.xiaobao.model
+  mapper-locations: com/xiaobao/dao/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

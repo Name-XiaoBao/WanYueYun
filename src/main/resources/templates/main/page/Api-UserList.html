@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>API用户管理</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../css/public.css" media="all">
+  <script src="../../lib/vue.min.js"></script>
+</head>
+<body>
+<div class="layuimini-container" id="app">
+  <div class="layuimini-main">
+    <span>用户数量：{{apiusernum}}</span>
+    <div class="layui-btn-group" style="float: right;">
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" @click="addapiuesr">
+        <i>添加</i>
+        <i class="layui-icon">&#xe654;</i>
+      </button>
+    </div>
+    <div style="padding: 1px">
+      <table id="apiuser" lay-filter="apiuser"></table>
+    </div>
+  </div>
+</div>
+<script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../lib/config.js"></script>
+<script src="../../lib/axios.min.js"></script>
+<script src="../../js/lay-module/layuimini/miniTab.js"></script>
+<script>
+  new Vue({
+    el : "#app",
+    data:{
+      apiuserlist:null,
+      apiusernum:null,
+      times:null
+    },
+    methods : {
+      addapiuesr(){
+        var paras = decodeURIComponent(location.search); //search获得地址中的参数
+        var result = paras.match(/[^\?&]*=[^&]*/g); //match是字符串中符合的字段一个一个取出来，result中的值为['login=xx','table=admin']
+        paras = {};
+        for (i in result) {
+          var temp = result[i].split('=');
+          paras[temp[0]] = temp[1];
+        }
+        var name = paras.name;
+        layer.prompt({title: '请输入用户名', formType: 3}, function(user, index){
+          layer.close(index);
+          layer.prompt({title: '请输入密码', formType: 3}, function(pass, index){
+            axios.get(Url+'session').then(res=>{
+              axios.get(Url+'api/Register?username='+res.data.data.user+'&password='+res.data.data.pass+'&name='+name+'&user='+user+'&pass='+pass).then(res=>{
+              layer.msg(res.data.msg);
+                setTimeout(function() {
+                  if (res.data.code==200) {
+                    location.reload();
+                  }
+                },500)
+              }).catch(e=>{
+                layer.msg(e.response.data.message);
+              });
+            });
+            layer.close(index);
+          });
+        });
+      },
+    },
+    created(){
+      var paras = decodeURIComponent(location.search); //search获得地址中的参数
+      var result = paras.match(/[^\?&]*=[^&]*/g); //match是字符串中符合的字段一个一个取出来，result中的值为['login=xx','table=admin']
+      paras = {};
+      for (i in result) {
+        var temp = result[i].split('=');
+        paras[temp[0]] = temp[1];
+      }
+      var name = paras.name;
+      axios.get(Url+'session').then(res=> {
+        //渲染表格
+        layui.use('table', function(){
+          var table = layui.table;
+          table.render({
+            elem: '#apiuser'
+            ,url: Url + '/api/UserList?username=' + res.data.data.user + '&password=' + res.data.data.pass + '&name=' + name //数据接口
+            ,parseData: function(userlist){ //userlist 即为原始返回的数据
+              return {
+                "code": 0, //解析接口状态
+                "msg": "", //解析提示文本
+                "count": userlist.data.length, //解析数据长度
+                "data": userlist.data //解析数据列表
+              };
+            },page: false //开启分页
+            ,cols: [[ //表头
+              {field: 'id', title: 'id',align:'center'},
+              {field: 'nameApi', title: 'API',align:'center'},
+              {field: 'user', title: '用户名',align:'center'},
+              {field: 'pass', title: '密码',align:'center'},
+              {field: 'integral',align:'center',title: '积分',sort:true,templet:function (integral) {
+                  if (integral.integral==null){
+                    return '0'
+                  }else {
+                    return integral.integral;
+                  }
+              }},
+              {field: 'membershipTime',align:'center',sort:true, title: '会员状态',templet:function (membershipTime) {
+                  function getCurrentTime() {
+                    var date = new Date();//当前时间
+                    var year = date.getFullYear() //返回指定日期的年份
+                    var month = repair(date.getMonth() + 1);//月
+                    var day = repair(date.getDate());//日
+                    var hour = repair(date.getHours());//时
+                    var minute = repair(date.getMinutes());//分
+                    var second = repair(date.getSeconds());//秒
+                    //当前时间
+                    var curTime = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+                    return curTime;
+                  }
+                  //补0
+                  function repair(i){
+                    if (i >= 0 && i <= 9) {
+                      return "0" + i;
+                    } else {
+                      return i;
+                    }
+                  }
+                  if (membershipTime.membershipTime==null){
+                    return '<button class="layui-btn layui-btn-warm layui-btn-sm">无会员</button>'
+                  }else if (membershipTime.membershipTime < getCurrentTime()){
+                    return '<button class="layui-btn layui-btn-danger layui-btn-sm">已过期</button>'
+                  }else {
+                    return membershipTime.membershipTime
+                  }
+              }},
+              {title: '操作',align:'center',unresize:true,toolbar: '#bar'}
+            ]]
+          });
+          //工具条事件
+          table.on('tool(apiuser)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            if(layEvent === 'del'){ //删除
+              layer.confirm('真的删除行么', function(index){
+                //向服务端发送删除指令
+                axios.get(Url + '/api/deluser?username=' + res.data.data.user + '&password=' + res.data.data.pass + '&name=' + name + '&user=' +data.user).then(res => {
+                  layer.msg(res.data.msg);
+                  setTimeout(function() {
+                    if (res.data.code==200) {
+                      location.reload();
+                    }
+                  },500);
+                });
+              });
+            } else if(layEvent === 'edit'){ //编辑
+              layui.use(['form','miniTab'], function () {
+                var form = layui.form,
+                        layer = layui.layer,
+                        miniTab = layui.miniTab;
+                // 打开新的窗口
+                miniTab.openNewTabByIframe({
+                  href:"page/UserModification.html?name="+data.nameApi+"&user="+data.user+"&pass="+data.pass,
+                  title:"用户修改",
+                });
+              });
+            }
+          });
+        });
+        axios.get(Url + '/api/UserList?username=' + res.data.data.user + '&password=' + res.data.data.pass + '&name=' + name).then(res => {
+          this.apiuserlist=res.data.data;
+          this.apiusernum = res.data.data.length;
+        });
+      });
+    }
+  })
+</script>
+<script type="text/html" id="bar">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+</html>
