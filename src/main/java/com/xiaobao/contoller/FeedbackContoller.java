@@ -4,6 +4,7 @@ import com.xiaobao.Util.EmailUtil;
 import com.xiaobao.Util.Json;
 import com.xiaobao.Util.LimitRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,8 @@ import javax.mail.MessagingException;
  */
 @RestController
 public class FeedbackContoller {
+    @Value("${WanYueYun.name}")
+    public String Name;
     @Autowired
     private EmailUtil emailUtil;
     Json json=new Json();
@@ -49,7 +52,7 @@ public class FeedbackContoller {
     @RequestMapping("/Feedback")
     public Json Feedback(String Content, String ContactInformation) {
         try {
-            emailUtil.TemplateFeedbackEmail("1753147761@qq.com","挽悦云",Content+"，联系方式："+ContactInformation);
+            emailUtil.TemplateFeedbackEmail("1753147761@qq.com",Name,Content+"，联系方式："+ContactInformation);
             json.json(200,"发送成功",null);
             return json;
         } catch (MessagingException e) {

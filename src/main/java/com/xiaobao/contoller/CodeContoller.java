@@ -5,6 +5,7 @@ import com.xiaobao.Util.Json;
 import com.xiaobao.Util.LimitRequest;
 import com.xiaobao.Util.VerificationCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,8 @@ import javax.mail.MessagingException;
  */
 @RestController
 public class CodeContoller {
+    @Value("${WanYueYun.name}")
+    public String Name;
     @Autowired
     private EmailUtil emailUtil;
     Json json=new Json();
@@ -32,7 +35,7 @@ public class CodeContoller {
         //随机验证码
         String code=Vc.generateVerifyCode(6);
         try {
-            emailUtil.TemplateCodeEmail(username,"挽悦云","您的验证码是："+code);
+            emailUtil.TemplateCodeEmail(username,Name,"您的验证码是："+code);
             // 没有出现异常，正常发送，返回true
             json.json(200,"发送成功", DigestUtils.md5DigestAsHex(code.getBytes()));
             return json;

@@ -1,10 +1,28 @@
+#项目配置
+WanYueYun:
+  #  项目名称（仅修改反馈及验证码功能的名称，其余请自行修改）
+  name: "挽悦云"
+  #  数据库URL
+  mysql_url: "数据库URL"
+  #  数据库端口
+  mysql_port: 3306
+  #  数据库名称
+  mysql_name: "数据库名称"
+  #  数据库用户名
+  mysql_user: "数据库用户名"
+  #  数据库密码
+  mysql_pass: "数据库密码"
+  #  邮箱账号
+  email: "邮箱账号"
+  #  邮箱授权码
+  email_pass: "邮箱授权码"
+web:
+  # API文件的路径
+  upload-path: "路径"
 server:
   port: 80   # 端口
   servlet:
     context-path: / # 项目路径
-# API文件的路径
-web:
-  upload-path: "路径"
 # 连接数据库
 spring:
   servlet:
@@ -15,9 +33,9 @@ spring:
     # SMTP服务器
     host: smtp.qq.com
     # 发送验证码邮箱
-    username: 邮箱
+    username: ${WanYueYun.email}
     # 授权码
-    password: 邮箱授权码
+    password: ${WanYueYun.email_pass}
     # 编码
     default-encoding: utf-8
     properties:
@@ -34,10 +52,10 @@ spring:
             enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/数据库名称?serverTimezone=GMT%2b8
+    url: jdbc:mysql://${WanYueYun.mysql_url}:${WanYueYun.mysql_port}/${WanYueYun.mysql_name}?serverTimezone=GMT%2b8
     type: com.alibaba.druid.pool.DruidDataSource
-    username: 数据库账号
-    password: 数据库密码
+    username: ${WanYueYun.mysql_user}
+    password: ${WanYueYun.mysql_pass}
   jackson: # 格式化时间
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
