@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class WebSocketServer {
 
     /**
-     * 用来记录当前在线连接数量,应该把它设计成线程安全的。
+     * 用来记录当前在线连接数量,应该把它设计成线程安全的
      */
     private static int onlineCount = 0;
 
