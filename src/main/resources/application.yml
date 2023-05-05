@@ -18,13 +18,25 @@ WanYueYun:
   email_pass: "邮箱授权码"
 web:
   # API文件的路径
-  upload-path: "文件存储路径"
+  upload-path: "路径"
 server:
   port: 80   # 端口
   servlet:
     context-path: / # 项目路径
 # 连接数据库
 spring:
+  freemarker:
+    request-context-attribute: request
+    prefix: /templates/
+    suffix: .html
+    content-type: text/html
+    enabled: true
+    cache: false
+    charset: UTF-8
+    allow-request-override: false
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
   servlet:
     multipart:
       max-file-size: 1024MB
@@ -66,11 +78,15 @@ spring:
     prefix: classpath:/templates/
     # 关闭Thymeleaf的缓存
     cache: false
-  resources:
-    static-locations: classpath:/static,classpath:/templates,file:${web.upload-path}
+  web:
+    resources:
+      static-locations: classpath:/static,classpath:/templates,file:${web.upload-path}
 # mybatis 配置
 mybatis:
   type-aliases-package: com.xiaobao.model
   mapper-locations: com/xiaobao/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
+  # 关闭mybatis启动图标
+  global-config:
+    banner: off
