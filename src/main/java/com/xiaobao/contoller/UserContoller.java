@@ -55,18 +55,21 @@ public class UserContoller {
      */
     @RequestMapping("/Register")
     public Json Register(String username,String password){
-        if (userService.user(username)==null){
-            int num =userService.Register(username,password);
-            if (num==0){
-                json.json(501,"注册失败",num);
-                return json;
-            }
-            json.json(200,"注册成功",num);
-            return json;
-        }else {
-            json.json(501,"该用户已存在",null);
+        if (password.equals("") || password.equals("null")) {
+            json.json(403, "账号密码不允许为空！", null);
             return json;
         }
+        if (userService.user(username) == null) {
+            int num = userService.Register(username, password);
+            if (num == 0) {
+                json.json(501, "注册失败", num);
+                return json;
+            }
+            json.json(200, "注册成功", num);
+        } else {
+            json.json(501, "该用户已存在", null);
+        }
+        return json;
     }
     /**
      * 用户登录

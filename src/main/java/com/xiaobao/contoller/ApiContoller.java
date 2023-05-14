@@ -62,26 +62,26 @@ public class ApiContoller {
     }
 
     /**
-     * 修改API信息
+     * 修改API信息（已弃用）
+     *
      * @param username 用户名
      * @param password 密码
-     * @param id ID
-     * @param name API名称
+     * @param id       ID
+     * @param name     API名称
      * @return
      */
     @RequestMapping("/upApi")
-    public Json upApi(String username,String password,Integer id,String name){
+    public Json upApi(String username, String password, Integer id, String name) {
         if (Ifuser(username, password)) {
             return json;
         }
-        int num =apiService.upApi(id,name);
-        if (num==0){
-            json.json(501,"修改失败",num);
-            return json;
-        }else {
-            json.json(200,"修改成功",num);
-            return json;
+        int num = apiService.upApi(id, name);
+        if (num == 0) {
+            json.json(501, "修改失败", num);
+        } else {
+            json.json(200, "修改成功", num);
         }
+        return json;
     }
 
     /**
