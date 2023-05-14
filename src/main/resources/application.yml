@@ -87,6 +87,3 @@ mybatis:
   mapper-locations: com/xiaobao/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
-  # 关闭mybatis启动图标
-  global-config:
-    banner: off
