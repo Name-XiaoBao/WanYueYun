@@ -22,7 +22,7 @@ api[0].list[0].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/upApi',
-    desc: '修改API信息',
+    desc: '修改API信息（已弃用）',
 });
 api[0].list[0].list.push({
     order: '3',
@@ -94,8 +94,8 @@ api[0].list[1].list.push({
 api[0].list.push({
     alias: 'CarouselContoller',
     order: '3',
-    link: '',
-    desc: '',
+    link: '轮播图',
+    desc: '轮播图',
     list: []
 })
 api[0].list[2].list.push({
