@@ -47,7 +47,20 @@ public class ApiUserServiceImpl implements ApiUserService {
      */
     @Override
     public ApiUser user_pass(String user, String pass) {
-        return apiUserDao.user_pass(user,pass);
+        return apiUserDao.user_pass(user, pass);
+    }
+
+    /**
+     * 判断是否存在此账号
+     *
+     * @param id
+     * @param user
+     * @param pass
+     * @return
+     */
+    @Override
+    public ApiUser id_user_pass(int id, String user, String pass) {
+        return apiUserDao.id_user_pass(id, user, pass);
     }
 
     /**

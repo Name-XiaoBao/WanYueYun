@@ -20,19 +20,33 @@ public interface ApiUserService {
      * @param user
      */
     int Register(String name, String user, String pass);
+
     /**
      * 判断用户名和密码是否一致
+     *
      * @param user pass
      * @return
      */
     ApiUser user_pass(String user, String pass);
 
     /**
+     * 判断是否存在此账号
+     *
+     * @param id
+     * @param user
+     * @param pass
+     * @return
+     */
+    ApiUser id_user_pass(int id, String user, String pass);
+
+    /**
      * 查询APi用户列表
+     *
      * @param NameApi
      * @return
      */
     List<ApiUser> Userlist(String NameApi);
+
     /**
      * 查询API用户信息
      * @param user

@@ -141,7 +141,7 @@ public class ApiUserContoller {
      */
     @RequestMapping("/UpPass")
     public Json UpPass(String username, String password, String name,int id,String user, String pass,String Newpass){
-        if (Iu(username, password, name, user, pass)) {
+        if (Iu(username, password, name, id, user, pass)) {
             return json;
         }
         int num=apiUserService.uppass(id,Newpass);
@@ -166,7 +166,7 @@ public class ApiUserContoller {
      */
     @RequestMapping("/upIntegral")
     public Json upIntegral(String username, String password, String name,int id,String user, String pass,String Integral){
-        if (Iu(username, password, name, user, pass)) {
+        if (Iu(username, password, name, id, user, pass)) {
             return json;
         }
         int num=apiUserService.upIntegral(id,Integral);
@@ -191,7 +191,7 @@ public class ApiUserContoller {
      */
     @RequestMapping("/upMembershipTime")
     public Json upMembershipTime(String username, String password, String name, int id, String user, String pass, String MembershipTime){
-        if (Iu(username, password, name, user, pass)) {
+        if (Iu(username, password, name, id, user, pass)) {
             return json;
         }
         int num=apiUserService.upMembershipTime(id,MembershipTime);
@@ -239,22 +239,19 @@ public class ApiUserContoller {
         if (ApiContoller.Iu(username, password, userService, json)) {
             return true;
         }
-        if(apiService.Api(username,name)==null){
-            json.json(404,"API不存在",null);
+        if (apiService.Api(username, name) == null) {
+            json.json(404, "API不存在", null);
             return true;
         }
         return false;
     }
-    public boolean Iu(String username, String password, String name, String user, String pass) {
+
+    public boolean Iu(String username, String password, String name, int id, String user, String pass) {
         if (IfUser(username, password, name)) {
             return true;
         }
-        if (apiUserService.user(name,user)==null){
-            json.json(404,"该用户不存在",null);
-            return true;
-        }
-        if (apiUserService.user_pass(user,pass)==null){
-            json.json(501,"密码错误",null);
+        if (apiUserService.id_user_pass(id, user, pass) == null) {
+            json.json(404, "该用户不存在", null);
             return true;
         }
         return false;
