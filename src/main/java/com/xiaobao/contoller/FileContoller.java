@@ -93,19 +93,19 @@ public class FileContoller {
             json.json(404,"该用户不存在",null);
             return json;
         }
-        if (apiService.Api(username,Api)==null){
-            json.json(404,"API不存在",null);
+        if (apiService.Api(username, Api) == null) {
+            json.json(404, "API不存在", null);
             return json;
         }
-        if (fileService.delFile("http://"+request.getServerName()+"/file/"+ Api + "/"+filename)==1){
-            java.io.File files = new java.io.File(path + Api + "/"+filename);
-            if(files.delete()){
-                json.json(200,"删除成功",null);
-            }else{
-                json.json(403,"删除失败", null);
+        if (fileService.delFile(filename) == 1) {
+            java.io.File files = new java.io.File(path + Api + "/" + filename);
+            if (files.delete()) {
+                json.json(200, "删除成功", null);
+            } else {
+                json.json(403, "删除失败", null);
             }
-        }else {
-            json.json(403,"删除失败", null);
+        } else {
+            json.json(403, "删除失败", null);
         }
         return json;
     }

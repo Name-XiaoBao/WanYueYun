@@ -3,7 +3,8 @@
 <mapper namespace="com.xiaobao.dao.FileDao">
     <!--添加文件直链-->
     <insert id="addFile">
-        INSERT INTO `file_url` (Api,Url) VALUES (#{Api},#{Url});
+        INSERT INTO `file_url` (Api, FileName, Url)
+        VALUES (#{Api}, #{FileName}, #{Url});
     </insert>
     <!--查询API文件列表-->
     <select id="file" resultType="com.xiaobao.model.File">
@@ -11,7 +12,9 @@
     </select>
     <!--删除API文件-->
     <delete id="delFile">
-        delete from file_url where Url=#{filename};
+        delete
+        from file_url
+        where FileName = #{filename};
     </delete>
     <!--删除API所有文件-->
     <delete id="AllDelFile">

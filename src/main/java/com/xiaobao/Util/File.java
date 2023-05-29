@@ -44,9 +44,9 @@ public class File {
                 // 保存文件
                 file.transferTo(dest);
                 // 文件直链
-                String fileUrl = "http://"+request.getServerName()+"/file/"+ Api + "/" + fileName;
+                String fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
                 // 将文件直链保存到数据库
-                fileService.addFile(Api,fileUrl);
+                fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
             }else {
                 // 保存文件
@@ -54,7 +54,7 @@ public class File {
                 // 文件直链
                 String fileUrl = "http://"+request.getServerName()+":"+request.getServerPort()+"/file/"+ Api + "/" + fileName;
                 // 将文件直链保存到数据库
-                fileService.addFile(Api,fileUrl);
+                fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
             }
         } catch (IOException e) {

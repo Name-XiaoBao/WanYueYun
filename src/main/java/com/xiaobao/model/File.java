@@ -19,4 +19,8 @@ public class File {
      * 文件直链
      */
     private String Url;
+    /**
+     * 文件名
+     */
+    private String FileName;
 }

@@ -12,11 +12,13 @@ import java.util.List;
 public interface FileDao {
     /**
      * 添加文件直链到数据库
+     *
      * @param Api
+     * @param filename
      * @param Url
      * @return
      */
-    int addFile(String Api,String Url);
+    int addFile(String Api, String FileName, String Url);
 
     /**
      * 查询API文件列表

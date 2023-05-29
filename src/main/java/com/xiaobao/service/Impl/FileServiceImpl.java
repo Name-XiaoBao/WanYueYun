@@ -19,12 +19,13 @@ public class FileServiceImpl implements FileService {
      * 添加文件直链到数据库
      *
      * @param Api
+     * @param FileName
      * @param Url
      * @return
      */
     @Override
-    public int addFile(String Api, String Url) {
-        return fileDao.addFile(Api,Url);
+    public int addFile(String Api, String FileName, String Url) {
+        return fileDao.addFile(Api, FileName, Url);
     }
 
     /**
