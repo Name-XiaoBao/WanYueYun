@@ -2,23 +2,25 @@
 WanYueYun:
   #  项目名称（仅修改反馈及验证码功能的名称，其余请自行修改）
   name: "挽悦云"
+  #  项目地址
+  url: "http://wanyue.xbnb666.top/"
   #  数据库URL
   mysql_url: "localhost"
   #  数据库端口
   mysql_port: 3306
   #  数据库名称
-  mysql_name: "数据库名称"
+  mysql_name: ""
   #  数据库用户名
-  mysql_user: "数据库用户名"
+  mysql_user: ""
   #  数据库密码
-  mysql_pass: "数据库密码"
+  mysql_pass: ""
   #  邮箱账号
-  email: "邮箱账号"
+  email: ""
   #  邮箱授权码
-  email_pass: "邮箱授权码"
+  email_pass: ""
 web:
   # API文件的路径
-  upload-path: "路径"
+  upload-path: ""
 server:
   port: 80   # 端口
   servlet:
@@ -86,6 +88,3 @@ mybatis:
   mapper-locations: com/xiaobao/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
-  # 关闭mybatis启动图标
-  global-config:
-    banner: off

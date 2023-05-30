@@ -4,11 +4,7 @@
 
 基于SpringBoot的后台API接口服务
 
-API开发者文档访问路径为doc/index.html
-
-云储存功能的的URL改一下，不然上传视频文件的直链会出错
-
-在 com/xiaobao/Util/File.java 的第30行
+API开发者文档访问路径为 doc/index.html
 
 官网：http://wanyue.xbnb666.top
 

@@ -16,18 +16,21 @@ import java.io.IOException;
 public class File {
     @Value("${web.upload-path}")
     public String path;
+    @Value("${WanYueYun.url}")
+    public String url;
     @Autowired
     private HttpServletRequest request;
     @Autowired
     private FileService fileService;
-    Uuid uuid=new Uuid();
+    Uuid uuid = new Uuid();
+
     /**
      * 上传文件并保存文件直链到数据库
+     *
      * @param file 要上传的文件
      * @return 文件直链
      */
     public String uploadFile(String Api,MultipartFile file) {
-        String url = "http://wanyue.xbnb666.top/";
         // 生成随机文件名
         String fileName = uuid.uuid();
         // 获取文件后缀名
