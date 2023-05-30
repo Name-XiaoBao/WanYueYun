@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./lib/layui-v2.6.3/css/layui.css" media="all">
+    <script src="./lib/layui-v2.6.3/layui.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <input class="layui-btn" name="file" style="width: 100%" type="file" multiple="multiple" id="fileUpload">
+    </div>
+    <div class="layui-progress-bar" lay-percent="0%" id="percent"></div>
+    <div style="margin-top:10px;">
+        <button id="btn" class="layui-btn" style="width: 100%">上传</button>
+    </div>
+</div>
+<script src="./lib/axios.min.js"></script>
+<script src="./lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
+<script>
+    layui.use(['upload', 'element'], function () {
+        var upload = layui.upload;
+        var element = layui.element;
+        var paras = decodeURIComponent(location.search); //search获得地址中的参数
+        var result = paras.match(/[^\?&]*=[^&]*/g); //match是字符串中符合的字段一个一个取出来，result中的值为['login=xx','table=admin']
+        paras = {};
+        for (i in result) {
+            var temp = result[i].split('=');
+            paras[temp[0]] = temp[1];
+        }
+        var username = paras.username;
+        var api = paras.api;
+        //执行实例
+        upload.render({
+            elem: '#fileUpload' //绑定元素
+            , url: '/upload' //上传接口
+            , auto: false
+            , bindAction: '#btn'
+            , field: "file"
+            , accept: "file"
+            , data: {
+                username: username,
+                Api: api
+            }
+            , done: function (res) {
+                //上传完毕回调
+                console.log(res)
+                alert(res.msg + "\n" + res.data + "\n返回后请下拉刷新！")
+            }
+            , error: function (err) {
+                //请求异常回调
+                console.log(err)
+                alert(err)
+            }
+            , progress: function (n) {
+                var percent = n + '%' //获取进度百分比
+                $("#percent").attr("lay-percent", percent);
+                element.render(); //进度条
+            }
+        });
+    });
+</script>
+</body>
+</html>
