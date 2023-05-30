@@ -27,6 +27,7 @@ public class File {
      * @return 文件直链
      */
     public String uploadFile(String Api,MultipartFile file) {
+        String url = "http://wanyue.xbnb666.top/file/";
         // 生成随机文件名
         String fileName = uuid.uuid();
         // 获取文件后缀名
@@ -46,7 +47,7 @@ public class File {
                 String fileUrl;
                 if (".mp4".equals(suffix)) {
                     // 文件直链
-                    fileUrl = "http://wanyue.xbnb666.top/file/" + Api + "/" + fileName;
+                    fileUrl = url + Api + "/" + fileName;
                     // 将文件直链保存到数据库
                 } else {
                     // 文件直链
@@ -61,7 +62,7 @@ public class File {
                 String fileUrl;
                 if (".mp4".equals(suffix)) {
                     // 文件直链
-                    fileUrl = "http://wanyue.xbnb666.top/file/" + Api + "/" + fileName;
+                    fileUrl = url + Api + "/" + fileName;
                     // 将文件直链保存到数据库
                 } else {
                     // 文件直链
