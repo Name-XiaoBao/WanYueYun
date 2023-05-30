@@ -13,7 +13,10 @@
     <div>
         <input class="layui-btn" name="file" style="width: 100%" type="file" multiple="multiple" id="fileUpload">
     </div>
-    <div class="layui-progress-bar" lay-percent="0%" id="percent"></div>
+    <div class="layui-progress layui-progress-big" style="margin: 20px;text-align: center" lay-filter="percent"
+         lay-showPercent="yes">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="0%"></div>
+    </div>
     <div style="margin-top:10px;">
         <button id="btn" class="layui-btn" style="width: 100%">上传</button>
     </div>
@@ -50,6 +53,7 @@
                 //上传完毕回调
                 console.log(res)
                 alert(res.msg + "\n" + res.data + "\n返回后请下拉刷新！")
+                layui.element.progress('percent', "0%");
             }
             , error: function (err) {
                 //请求异常回调
@@ -57,9 +61,8 @@
                 alert(err)
             }
             , progress: function (n) {
-                var percent = n + '%' //获取进度百分比
-                $("#percent").attr("lay-percent", percent);
-                element.render(); //进度条
+                const percent = n + '%';
+                element.progress('percent', percent);
             }
         });
     });

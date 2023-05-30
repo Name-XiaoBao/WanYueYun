@@ -43,17 +43,31 @@ public class File {
                 dest.getParentFile().mkdirs();
                 // 保存文件
                 file.transferTo(dest);
-                // 文件直链
-                String fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
-                // 将文件直链保存到数据库
+                String fileUrl;
+                if (".mp4".equals(suffix)) {
+                    // 文件直链
+                    fileUrl = "http://wanyue.xbnb666.top/file/" + Api + "/" + fileName;
+                    // 将文件直链保存到数据库
+                } else {
+                    // 文件直链
+                    fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
+                    // 将文件直链保存到数据库
+                }
                 fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
             }else {
                 // 保存文件
                 file.transferTo(dest);
-                // 文件直链
-                String fileUrl = "http://"+request.getServerName()+":"+request.getServerPort()+"/file/"+ Api + "/" + fileName;
-                // 将文件直链保存到数据库
+                String fileUrl;
+                if (".mp4".equals(suffix)) {
+                    // 文件直链
+                    fileUrl = "http://wanyue.xbnb666.top/file/" + Api + "/" + fileName;
+                    // 将文件直链保存到数据库
+                } else {
+                    // 文件直链
+                    fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
+                    // 将文件直链保存到数据库
+                }
                 fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
             }
