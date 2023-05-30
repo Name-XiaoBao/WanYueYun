@@ -23,20 +23,16 @@ public class File {
     @Autowired
     private FileService fileService;
     Uuid uuid = new Uuid();
-
     /**
      * 上传文件并保存文件直链到数据库
-     *
      * @param file 要上传的文件
      * @return 文件直链
      */
     public String uploadFile(String Api,MultipartFile file) {
-        // 生成随机文件名
-        String fileName = uuid.uuid();
+        // 获取文件名
+        String fileName = file.getOriginalFilename();
         // 获取文件后缀名
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        // 拼接文件名和后缀名
-        fileName += suffix;
         // 文件存储路径
         String filePath = path + Api + "/" + fileName;
         // 创建文件对象
