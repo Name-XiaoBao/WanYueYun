@@ -47,11 +47,9 @@ public class File {
                 if (".mp4".equals(suffix)) {
                     // 文件直链
                     fileUrl = url + "file/" + Api + "/" + fileName;
-                    // 将文件直链保存到数据库
                 } else {
                     // 文件直链
                     fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
-                    // 将文件直链保存到数据库
                 }
                 fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
@@ -62,11 +60,9 @@ public class File {
                 if (".mp4".equals(suffix)) {
                     // 文件直链
                     fileUrl = url + "file/" + Api + "/" + fileName;
-                    // 将文件直链保存到数据库
                 } else {
                     // 文件直链
                     fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
-                    // 将文件直链保存到数据库
                 }
                 fileService.addFile(Api, fileName, fileUrl);
                 return fileUrl;
