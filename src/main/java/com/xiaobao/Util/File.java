@@ -41,32 +41,16 @@ public class File {
             // 判断文件夹是否存在，不存在则创建文件夹
             if (!dest.getParentFile().exists()) {
                 dest.getParentFile().mkdirs();
-                // 保存文件
-                file.transferTo(dest);
-                String fileUrl;
-                if (".mp4".equals(suffix)) {
-                    // 文件直链
-                    fileUrl = url + "file/" + Api + "/" + fileName;
-                } else {
-                    // 文件直链
-                    fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
-                }
-                fileService.addFile(Api, fileName, fileUrl);
-                return fileUrl;
-            }else {
-                // 保存文件
-                file.transferTo(dest);
-                String fileUrl;
-                if (".mp4".equals(suffix)) {
-                    // 文件直链
-                    fileUrl = url + "file/" + Api + "/" + fileName;
-                } else {
-                    // 文件直链
-                    fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
-                }
-                fileService.addFile(Api, fileName, fileUrl);
-                return fileUrl;
             }
+            // 保存文件
+            file.transferTo(dest);
+            // 文件直链
+            String fileUrl = url + "file/" + Api + "/" + fileName;
+            if (!".mp4".equals(suffix)) {
+                fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
+            }
+            fileService.addFile(Api, fileName, fileUrl);
+            return fileUrl;
         } catch (IOException e) {
             e.printStackTrace();
         }
