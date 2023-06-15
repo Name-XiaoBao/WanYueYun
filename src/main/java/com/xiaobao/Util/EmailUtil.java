@@ -1,6 +1,7 @@
 package com.xiaobao.Util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,14 +22,17 @@ public class EmailUtil {
     JavaMailSenderImpl sender;
     @Autowired
     TemplateEngine templateEngine;
-    String email="xiaobaowangluokeji@qq.com";
+    @Value("${WanYueYun.email}")
+    public String email;
+
     /**
      * 发送普通文本邮件
+     *
      * @param username
      * @param Title
      * @param Content
      */
-    public void TextEmail(String username,String Title,String Content){
+    public void TextEmail(String username, String Title, String Content) {
         // 用来设置邮件信息
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         // 设置邮件标题
