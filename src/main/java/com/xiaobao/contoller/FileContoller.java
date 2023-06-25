@@ -83,14 +83,19 @@ public class FileContoller {
     /**
      * 删除API文件
      * @param username 挽悦云账号
+     * @param password 挽悦云密码
      * @param Api API名称
      * @param filename 文件名（必须要有文件后缀）
      * @return
      */
     @RequestMapping("/DelFile")
-    public Json delfile(String username,String Api,String filename){
+    public Json delfile(String username,String password,String Api,String filename){
         if (userService.user(username)==null){
             json.json(404,"该用户不存在",null);
+            return json;
+        }
+        if (userService.user_pass(username,password)==null){
+            json.json(403,"账号或密码错误！",null);
             return json;
         }
         if (apiService.Api(username, Api) == null) {
