@@ -105,14 +105,15 @@ public class CarmiContoller {
             if ("Integral".equals(carmiService.carmi(Carmi).getType())) {
                 if (carmiService.IntegralCarmi(carmiService.carmi(Carmi).getApi(), user, carmiService.carmi(Carmi).getContent()) == 1) {
                     json.json(200, "兑换成功", null);
+                    carmiService.delCarmi(carmiService.carmi(Carmi).getApi(), Carmi);
                 } else {
                     json.json(400, "兑换失败", null);
                 }
                 return json;
             } else if ("Member".equals(carmiService.carmi(Carmi).getType())) {
-
                 if (carmiService.MemberCarmi(carmiService.carmi(Carmi).getApi(), user, carmiService.carmi(Carmi).getContent()) == 1) {
                     json.json(200, "兑换成功", null);
+                    carmiService.delCarmi(carmiService.carmi(Carmi).getApi(), Carmi);
                 } else {
                     json.json(400, "兑换失败", null);
                 }
