@@ -92,13 +92,38 @@ api[0].list[1].list.push({
     desc: '删除API用户',
 });
 api[0].list.push({
-    alias: 'CarouselContoller',
+    alias: 'CarmiContoller',
     order: '3',
+    link: '',
+    desc: '',
+    list: []
+})
+api[0].list[2].list.push({
+    order: '1',
+    deprecated: 'false',
+    url: 'http://wanyue.xbnb666.top/api/AddCarmi',
+    desc: '创建卡密',
+});
+api[0].list[2].list.push({
+    order: '2',
+    deprecated: 'false',
+    url: 'http://wanyue.xbnb666.top/api/CarmiType',
+    desc: '查询卡密类型',
+});
+api[0].list[2].list.push({
+    order: '3',
+    deprecated: 'false',
+    url: 'http://wanyue.xbnb666.top/api/Carmi',
+    desc: '卡密兑换',
+});
+api[0].list.push({
+    alias: 'CarouselContoller',
+    order: '4',
     link: '轮播图',
     desc: '轮播图',
     list: []
 })
-api[0].list[2].list.push({
+api[0].list[3].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Carousel',
@@ -106,12 +131,12 @@ api[0].list[2].list.push({
 });
 api[0].list.push({
     alias: 'CodeContoller',
-    order: '4',
+    order: '5',
     link: '发送邮箱验证码（间隔1分钟一次）',
     desc: '发送邮箱验证码（间隔1分钟一次）',
     list: []
 })
-api[0].list[3].list.push({
+api[0].list[4].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/VerificationCode',
@@ -119,12 +144,12 @@ api[0].list[3].list.push({
 });
 api[0].list.push({
     alias: 'EditionContoller',
-    order: '5',
+    order: '6',
     link: '版本信息查询',
     desc: '版本信息查询',
     list: []
 })
-api[0].list[4].list.push({
+api[0].list[5].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Edition',
@@ -132,12 +157,12 @@ api[0].list[4].list.push({
 });
 api[0].list.push({
     alias: 'EmailContoller',
-    order: '6',
+    order: '7',
     link: '发送邮件',
     desc: '发送邮件',
     list: []
 })
-api[0].list[5].list.push({
+api[0].list[6].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/email',
@@ -145,18 +170,18 @@ api[0].list[5].list.push({
 });
 api[0].list.push({
     alias: 'FeedbackContoller',
-    order: '7',
+    order: '8',
     link: '用户反馈（间隔三分钟一次）',
     desc: '用户反馈（间隔三分钟一次）',
     list: []
 })
-api[0].list[6].list.push({
+api[0].list[7].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/UserFeedback',
     desc: 'API用户反馈',
 });
-api[0].list[6].list.push({
+api[0].list[7].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Feedback',
@@ -164,24 +189,24 @@ api[0].list[6].list.push({
 });
 api[0].list.push({
     alias: 'FileContoller',
-    order: '8',
+    order: '9',
     link: '云储存',
     desc: '云储存',
     list: []
 })
-api[0].list[7].list.push({
+api[0].list[8].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/upload',
     desc: '上传API文件',
 });
-api[0].list[7].list.push({
+api[0].list[8].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/file',
     desc: '查询API文件列表',
 });
-api[0].list[7].list.push({
+api[0].list[8].list.push({
     order: '3',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/DelFile',
@@ -189,12 +214,12 @@ api[0].list[7].list.push({
 });
 api[0].list.push({
     alias: 'InterfaceContoller',
-    order: '9',
+    order: '10',
     link: '接口文档查询',
     desc: '接口文档查询',
     list: []
 })
-api[0].list[8].list.push({
+api[0].list[9].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Interface',
@@ -202,12 +227,12 @@ api[0].list[8].list.push({
 });
 api[0].list.push({
     alias: 'LinksContoller',
-    order: '10',
+    order: '11',
     link: '友情链接',
     desc: '友情链接',
     list: []
 })
-api[0].list[9].list.push({
+api[0].list[10].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/links',
@@ -215,12 +240,12 @@ api[0].list[9].list.push({
 });
 api[0].list.push({
     alias: 'Md5Contoller',
-    order: '11',
+    order: '12',
     link: 'md5加密',
     desc: 'MD5加密',
     list: []
 })
-api[0].list[10].list.push({
+api[0].list[11].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Md5',
@@ -228,12 +253,12 @@ api[0].list[10].list.push({
 });
 api[0].list.push({
     alias: 'NoticeContoller',
-    order: '12',
+    order: '13',
     link: '公告查询',
     desc: '公告查询',
     list: []
 })
-api[0].list[11].list.push({
+api[0].list[12].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Notice',
@@ -241,36 +266,36 @@ api[0].list[11].list.push({
 });
 api[0].list.push({
     alias: 'RemoteDocumentContoller',
-    order: '13',
+    order: '14',
     link: 'api文档',
     desc: 'API文档',
     list: []
 })
-api[0].list[12].list.push({
+api[0].list[13].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/api/AddFile',
     desc: '创建API文档',
 });
-api[0].list[12].list.push({
+api[0].list[13].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/api/RemoteDocument',
     desc: '查询用户API文档信息',
 });
-api[0].list[12].list.push({
+api[0].list[13].list.push({
     order: '3',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/api/FileList',
     desc: '查询API文档列表',
 });
-api[0].list[12].list.push({
+api[0].list[13].list.push({
     order: '4',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/api/UpdateFile',
     desc: 'Api文档修改',
 });
-api[0].list[12].list.push({
+api[0].list[13].list.push({
     order: '5',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/api/DelFile',
@@ -278,24 +303,24 @@ api[0].list[12].list.push({
 });
 api[0].list.push({
     alias: 'StartStatisticsContoller',
-    order: '14',
+    order: '15',
     link: 'api启动次数统计',
     desc: 'API启动次数统计',
     list: []
 })
-api[0].list[13].list.push({
+api[0].list[14].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/AddStartStatistics',
     desc: '增加API启动次数（三分钟内只能访问一次，访问一次+1）',
 });
-api[0].list[13].list.push({
+api[0].list[14].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/StartStatistics',
     desc: '获取API启动次数',
 });
-api[0].list[13].list.push({
+api[0].list[14].list.push({
     order: '3',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/DelStartStatistics',
@@ -303,12 +328,12 @@ api[0].list[13].list.push({
 });
 api[0].list.push({
     alias: 'ThirdPartyLoginContoller',
-    order: '15',
+    order: '16',
     link: '第三方调用挽悦云账号登录',
     desc: '第三方调用挽悦云账号登录',
     list: []
 })
-api[0].list[14].list.push({
+api[0].list[15].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/ThirdPartyLogin',
@@ -316,36 +341,36 @@ api[0].list[14].list.push({
 });
 api[0].list.push({
     alias: 'UserContoller',
-    order: '16',
+    order: '17',
     link: '挽悦云用户管理',
     desc: '挽悦云用户管理',
     list: []
 })
-api[0].list[15].list.push({
+api[0].list[16].list.push({
     order: '1',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/session',
     desc: '获取session',
 });
-api[0].list[15].list.push({
+api[0].list[16].list.push({
     order: '2',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/Register',
     desc: '用户注册',
 });
-api[0].list[15].list.push({
+api[0].list[16].list.push({
     order: '3',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/login',
     desc: '用户登录',
 });
-api[0].list[15].list.push({
+api[0].list[16].list.push({
     order: '4',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/end',
     desc: '注销登录',
 });
-api[0].list[15].list.push({
+api[0].list[16].list.push({
     order: '5',
     deprecated: 'false',
     url: 'http://wanyue.xbnb666.top/up_user',

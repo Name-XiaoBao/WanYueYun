@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobao.dao.CarmiDao">
+    <insert id="addCarmi">
+        INSERT INTO `carmi` (Api, Type, Carmi, Content)
+        VALUES (#{api}, #{type}, #{Carmi}, #{Content});
+    </insert>
+    <select id="CarmiType" resultType="com.xiaobao.model.Carmi">
+        select *
+        from carmi
+        where Api = #{api}
+          and Type = #{type};
+    </select>
+    <select id="carmi" resultType="com.xiaobao.model.Carmi">
+        select *
+        from carmi
+        where Carmi = #{Carmi};
+    </select>
+    <update id="IntegralCarmi">
+        UPDATE apiuser
+        SET Integral = COALESCE(Integral, 0) + #{Integral}
+        WHERE NameApi = #{api}
+          AND user = #{user};
+    </update>
+    <update id="MemberCarmi">
+        UPDATE apiuser
+        SET MembershipTime = CASE
+                                 WHEN MembershipTime IS NOT NULL THEN DATE_ADD(MembershipTime, INTERVAL #{Member} DAY)
+                                 ELSE DATE_ADD(CURDATE(), INTERVAL #{Member} DAY)
+            END
+        WHERE NameApi = #{api}
+          and user = #{user};
+    </update>
+    <delete id="delCarmi">
+        DELETE
+        FROM carmi
+        WHERE Api = #{api}
+          and Carmi = #{Carmi};
+    </delete>
+</mapper>
