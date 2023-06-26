@@ -94,8 +94,8 @@ api[0].list[1].list.push({
 api[0].list.push({
     alias: 'CarmiContoller',
     order: '3',
-    link: '',
-    desc: '',
+    link: '卡密功能',
+    desc: '卡密功能',
     list: []
 })
 api[0].list[2].list.push({
