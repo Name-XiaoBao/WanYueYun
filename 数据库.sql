@@ -1,19 +1,19 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 挽悦云
-Source Server Version : 50650
-Source Host           : 121.199.175.147:3307
+Source Server         : 挽悦云本地
+Source Server Version : 50740
+Source Host           : 192.168.1.10:3306
 Source Database       : wanyueyun
 
 Target Server Type    : MYSQL
-Target Server Version : 50650
+Target Server Version : 50740
 File Encoding         : 65001
 
-Date: 2023-05-29 22:34:11
+Date: 2023-06-27 02:01:10
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for api
@@ -27,7 +27,7 @@ CREATE TABLE `api`
     `name` varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 202
+  AUTO_INCREMENT = 326
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -44,7 +44,23 @@ CREATE TABLE `apiuser`
     `MembershipTime` datetime DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 425
+  AUTO_INCREMENT = 518
+  DEFAULT CHARSET = utf8mb4;
+
+-- ----------------------------
+-- Table structure for carmi
+-- ----------------------------
+DROP TABLE IF EXISTS `carmi`;
+CREATE TABLE `carmi`
+(
+    `id`      int(11)      NOT NULL AUTO_INCREMENT,
+    `Api`     varchar(255) NOT NULL,
+    `Type`    varchar(255) NOT NULL,
+    `Carmi`   varchar(255) NOT NULL,
+    `Content` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 7
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -90,7 +106,7 @@ CREATE TABLE `file_url`
     `Url`      varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 12
+  AUTO_INCREMENT = 383
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -118,7 +134,7 @@ CREATE TABLE `links`
     `url`   varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 9
+  AUTO_INCREMENT = 10
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -133,7 +149,7 @@ CREATE TABLE `notice`
     `ReleaseTime` datetime     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 4
+  AUTO_INCREMENT = 7
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -151,7 +167,7 @@ CREATE TABLE `remote_document`
     `UpdateTime`   datetime     DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 228
+  AUTO_INCREMENT = 376
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -165,7 +181,7 @@ CREATE TABLE `start_statistics`
     `Num` int(11) DEFAULT '1',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 4
+  AUTO_INCREMENT = 6
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -180,7 +196,7 @@ CREATE TABLE `third_party_login`
     `UserKey`        varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 51
+  AUTO_INCREMENT = 87
   DEFAULT CHARSET = utf8mb4;
 
 -- ----------------------------
@@ -195,5 +211,5 @@ CREATE TABLE `user`
     `Jurisdiction` int(11)      NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 162
+  AUTO_INCREMENT = 227
   DEFAULT CHARSET = utf8mb4;
