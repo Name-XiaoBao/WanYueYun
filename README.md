@@ -6,6 +6,9 @@
 
 API开发者文档访问路径为 doc/index.html
 
+App采用uniapp进行开发
+后台地址在util/config.js文件里更改
+
 官网：http://wanyue.xbnb666.top
 
 本项目所有权为小暴技术团队

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传文件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .head-btn {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .file {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            text-indent: 0;
+            overflow: hidden;
+            color: transparent;
+        }
+
+        .fileName {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file input {
+            position: absolute;
+            font-size: 20px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="head-btn">
+    <form action="" method="post">
+        <a href="javascript:;" class="file" id="selectFile">
+            <span class="fileName"></span>
+            <input type="file" name="uploadFile" id="uploadFile">
+        </a>
+    </form>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js">
+</script>
+<script>
+    var files = []
+    var options = {}
+
+    function passInfo(info) {
+        options = info;
+        console.log('接口相关参数' + JSON.stringify(info))
+    }
+
+    function setStyle(info) {
+        console.log('样式' + info.fileStyle)
+        for (let k in info.fileStyle) {
+            $(".file").css(k, info.fileStyle[k])
+        }
+        $('.fileName').html(info.fileTitle)
+    }
+
+    // console.log(44456,getQuery('token')); // 调用获取参数
+    $(".file").on("change", "input[type='file']", function () {
+        files = [];
+        let filePath = $(this).val();
+        console.log(filePath)
+        uni.postMessage({
+            data: {
+                filePath: filePath,
+            }
+        })
+        console.log(document.getElementById('uploadFile').files[0])
+        let file = document.getElementById('uploadFile').files[0];
+        files.push(file)
+        console.log(JSON.stringify(files))
+        if (options.url) {
+            upload()
+        }
+        console.log(files.length)
+    });
+
+    function upload() {
+        var formdata = new FormData(); // 创建一个form类型的数据
+        formdata.append("file", files[0]); // 获取上传文件的数据
+        console.log(formdata)
+        var xhr = new XMLHttpRequest();
+        xhr.open(options.type, options.url, true)
+        for (let key in options.header) {
+            xhr.setRequestHeader(key, options.header[key])
+        }
+        xhr.upload.onprogress = function (ev) {
+            console.log(ev)
+            // ev.loaded 文件已经上传了多少
+            // ev.total 上传文件的总大小
+            var result = (ev.loaded / ev.total) * 100 + '%'
+        }
+        // 监听响应
+        xhr.onreadystatechange = function () {
+            console.log('状态' + xhr.readyState)
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    console.log('上传服务器返回结果' + xhr.responseText)
+                    uni.postMessage({
+                        data: {
+                            files: xhr.responseText
+                        }
+                    })
+                }
+            }
+
+        }
+        xhr.send(formdata)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+  "pages": [
+    {
+      "path": "pages/index",
+      "style": {
+        "navigationBarTitleText": "挽悦云",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/File",
+      "style": {
+        "navigationBarTitleText": "文档",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/Api",
+      "style": {
+        "navigationBarTitleText": "API",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/PersonalCenter",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/user/UserList",
+      "style": {
+        "navigationBarTitleText": "用户管理",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/user/UpUser",
+      "style": {
+        "navigationBarTitleText": "用户修改",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/file/FileList",
+      "style": {
+        "navigationBarTitleText": "远程文档",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/file/AddFile",
+      "style": {
+        "navigationBarTitleText": "新建文档",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/file/UpFile",
+      "style": {
+        "navigationBarTitleText": "文档Edit",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/cloud/CloudList",
+      "style": {
+        "navigationBarTitleText": "云储存",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/cloud/FileUpload",
+      "style": {
+        "navigationBarTitleText": "文件上传",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/Feedback",
+      "style": {
+        "navigationBarTitleText": "反馈",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/About",
+      "style": {
+        "navigationBarTitleText": "关于",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/carmi/CarmiList",
+      "style": {
+        "navigationBarTitleText": "卡密列表",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+      }
+    }
+  ],
+  "globalStyle": {
+    "app-plus": {
+      "bounce": "none",
+      "scrollIndicator": "none"
+    }
+  }
+}
