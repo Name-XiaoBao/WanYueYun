@@ -40,6 +40,10 @@ public class CarmiContoller {
      */
     @PostMapping("/AddCarmi")
     public Json AddCarmi(String username, String password, String api, String type, int num, String Content) {
+        if ("".equals(Content)) {
+            json.json(403, "不允许为空！", null);
+            return json;
+        }
         if (userService.user(username) == null) {
             json.json(404, "该用户不存在", null);
             return json;
