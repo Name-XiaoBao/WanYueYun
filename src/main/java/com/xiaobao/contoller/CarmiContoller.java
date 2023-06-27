@@ -43,28 +43,29 @@ public class CarmiContoller {
         if ("".equals(Content)) {
             json.json(403, "不允许为空！", null);
             return json;
-        }
-        if (userService.user(username) == null) {
-            json.json(404, "该用户不存在", null);
-            return json;
-        }
-        if (userService.user_pass(username, password) == null) {
-            json.json(403, "账号或密码错误", null);
-            return json;
-        }
-        if (apiService.Api(username, api) == null) {
-            json.json(404, "API不存在", null);
-            return json;
-        }
-        if ("Integral".equals(type) || "Member".equals(type)) {
-            for (int i = 0; i < num; i++) {
-                carmiService.addCarmi(api, type, uuid.uuid(), Content);
-            }
-            json.json(200, "创建成功", null);
         } else {
-            json.json(403, "无效的卡密类型", null);
+            if (userService.user(username) == null) {
+                json.json(404, "该用户不存在", null);
+                return json;
+            }
+            if (userService.user_pass(username, password) == null) {
+                json.json(403, "账号或密码错误", null);
+                return json;
+            }
+            if (apiService.Api(username, api) == null) {
+                json.json(404, "API不存在", null);
+                return json;
+            }
+            if ("Integral".equals(type) || "Member".equals(type)) {
+                for (int i = 0; i < num; i++) {
+                    carmiService.addCarmi(api, type, uuid.uuid(), Content);
+                }
+                json.json(200, "创建成功", null);
+            } else {
+                json.json(403, "无效的卡密类型", null);
+            }
+            return json;
         }
-        return json;
     }
 
     /**
