@@ -11,8 +11,8 @@
     <groupId>com.xiaobao</groupId>
     <artifactId>WanYueYun</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Backstage</name>
-    <description>Backstage</description>
+    <name>WanYueYun</name>
+    <description>WanYueYun</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
