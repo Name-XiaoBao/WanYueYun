@@ -14,7 +14,7 @@ public interface FileDao {
      * 添加文件直链到数据库
      *
      * @param Api
-     * @param filename
+     * @param FileName
      * @param Url
      * @return
      */
