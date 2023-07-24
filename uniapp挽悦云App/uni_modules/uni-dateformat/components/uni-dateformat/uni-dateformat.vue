@@ -1,5 +1,5 @@
 <template>
-  <text>{{dateShow}}</text>
+	<text>{{dateShow}}</text>
 </template>
 
 <script>

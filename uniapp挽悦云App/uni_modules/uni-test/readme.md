@@ -1,5 +1,4 @@
 ## DataCheckbox 数据驱动的单选复选框
-
 > **组件名：uni-data-checkbox**
 > 代码块： `uDataCheckbox`
 

@@ -375,11 +375,9 @@ $border-color: #ebeef5;
   overflow: hidden;
   box-sizing: border-box;
 }
-
 .empty-border {
   border-right: 1px $border-color solid;
 }
-
 .uni-table-text {
   position: absolute;
   right: 0;

@@ -13,13 +13,11 @@
 ### 1. 高性能
 
 目前为止，在小程序和混合app领域，暂时还没有比 `uni-ui` 更高性能的框架。
-
 - 自动差量更新数据
 
 虽然uni-app支持小程序自定义组件，所有小程序的ui库都可以用。但小程序自定义组件的ui库都需要使用setData手动更新数据，在大数据量时、或高频更新数据时，很容易产生性能问题。
 
 而 `uni-ui` 属于vue组件，uni-app引擎底层自动diff更新数据。当然其实插件市场里众多vue组件都具备这个特点。
-
 - 优化逻辑层和视图层通讯折损
 
 非H5，不管是小程序还是App，不管是app的webview渲染还是原生渲染，全都是逻辑层和视图层分离的。这里就有一个逻辑层和视图层通讯的折损问题。
@@ -27,7 +25,6 @@
 
 这时就需要使用css动画以及平台底层提供的wxs、bindingx等技术。不过这些技术都比较复杂，所以 `uni-ui`
 里做了封装，在需要跟手式操作的ui组件，比如swiperaction列表项左滑菜单，就在底层使用了这些技术，实现了高性能的交互体验
-
 - 背景停止
 
 很多ui组件是会一直动的，比如轮播图、跑马灯。即便这个窗体被新窗体挡住，它在背景层仍然在消耗着硬件资源。在Android的webview版本为chrome66以上，背景操作ui会引发很严重的性能问题，造成前台界面明显卡顿。
@@ -61,12 +58,12 @@ ui是一种需求非常发散的产品，DCloud官方也无意用 `uni-ui` 压�
 
 我们欢迎更多优秀的ui组件出现，也欢迎更多人贡献 `uni-ui` 的主题风格，满足更多用户的需求。
 
+
 ## 快速开始
 
 uni-ui支持 HBuilderX直接新建项目模板、npm安装和单独导入个别组件等多种使用方式
 
 ### 在HBuilderX 新建uni-app项目的模板中，选择uni-ui模板
-
 ![HBuilderX内创建uni-ui项目](https://img.cdn.aliyun.dcloud.net.cn/uni-app/doc/create-uni-ui-project.jpg)
 
 由于uni-app独特的[easycom](https://uniapp.dcloud.io/collocation/pages?id=easycom)技术，可以免引用、注册，直接使用各种符合规则的vue组件。
@@ -185,13 +182,11 @@ uni-ui支持 HBuilderX直接新建项目模板、npm安装和单独导入个别�
 `vue-cli` 项目请先安装 sass 及 sass-loader，如在 HBuliderX 中使用，可跳过此步。
 
 - 安装 sass
-
 ```
  npm i sass -D   或   yarn add sass -D  
 ```
 
 - 安装 sass-loader
-
 ```
 npm i sass-loader@10.1.1 -D   或   yarn add sass-loader@10.1.1 -D
 ```

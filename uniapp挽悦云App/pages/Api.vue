@@ -39,6 +39,12 @@
           </view>
         </uni-grid-item>
         <uni-grid-item>
+          <view class="Function" @click="msg">
+            <image src="@/static/icon/msg.png" class="icon"></image>
+            <text>聊天室</text>
+          </view>
+        </uni-grid-item>
+        <uni-grid-item>
           <view class="Function" @click="Empty">
             <image src="@/static/icon/Empty.png" class="icon"></image>
             <text style="color: #c1c1c1;">清空启动次数</text>
@@ -163,6 +169,11 @@ export default {
     Carmilist() {
       uni.navigateTo({
         url: 'carmi/CarmiList?ApiName=' + this.name
+      });
+    },
+    msg() {
+      uni.navigateTo({
+        url: 'msg?ApiName=' + this.name
       });
     }
   },

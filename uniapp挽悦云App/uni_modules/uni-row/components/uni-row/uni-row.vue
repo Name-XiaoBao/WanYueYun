@@ -1,5 +1,5 @@
 <template>
-  <view :class="[ 'uni-row', typeClass , justifyClass, alignClass, ]" :style="{
+	<view :class="[ 'uni-row', typeClass , justifyClass, alignClass, ]" :style="{
 		marginLeft:`${Number(marginValue)}rpx`,
 		marginRight:`${Number(marginValue)}rpx`,
 	}">

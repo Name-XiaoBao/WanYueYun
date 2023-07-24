@@ -1,5 +1,5 @@
 <template>
-  <view class="uni-calendar" @mouseleave="leaveCale">
+	<view class="uni-calendar" @mouseleave="leaveCale">
 
     <view v-if="!insert && show" class="uni-calendar__mask" :class="{'uni-calendar--mask-show':aniMaskShow}"
           @click="maskClick"></view>

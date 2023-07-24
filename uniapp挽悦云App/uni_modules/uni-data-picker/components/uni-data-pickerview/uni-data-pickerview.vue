@@ -2,17 +2,17 @@
   <view class="uni-data-pickerview">
     <scroll-view v-if="!isCloudDataList" class="selected-area" scroll-x="true">
       <view class="selected-list">
-        <view
-            class="selected-item"
-            v-for="(item,index) in selected"
-            :key="index"
-            :class="{
+          <view
+              class="selected-item"
+              v-for="(item,index) in selected"
+              :key="index"
+              :class="{
               'selected-item-active':index == selectedIndex
             }"
-            @click="handleSelect(index)"
-        >
-          <text>{{item.text || ''}}</text>
-        </view>
+              @click="handleSelect(index)"
+          >
+            <text>{{item.text || ''}}</text>
+          </view>
       </view>
     </scroll-view>
     <view class="tab-c">

@@ -397,7 +397,6 @@ function checkDate(date) {
 }
 
 const dateTimeReg = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])( [0-5]?[0-9]:[0-5]?[0-9]:[0-5]?[0-9])?$/
-
 function fixIosDateFormat(value) {
     if (typeof value === 'string' && dateTimeReg.test(value)) {
         value = value.replace(/-/g, '/')

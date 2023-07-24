@@ -22,7 +22,6 @@
 
 <script>
 import tableCheckbox from './table-checkbox.vue'
-
 /**
  * Tr 表格行组件
  * @description 表格行组件 仅包含 th,td 组件

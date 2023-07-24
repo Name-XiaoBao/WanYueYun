@@ -121,6 +121,14 @@
         "navigationBarTextStyle": "black",
         "enablePullDownRefresh": true
       }
+    },
+    {
+      "path": "pages/msg",
+      "style": {
+        "navigationBarTitleText": "聊天室",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+      }
     }
   ],
   "globalStyle": {

@@ -235,16 +235,13 @@ $uni-primary: #007aff !default;
 .table--border {
   border-right: 1px $border-color solid;
 }
-
 .uni-table-th-content {
   display: flex;
   align-items: center;
   flex: 1;
 }
-
 .arrow-box {
 }
-
 .arrow {
   display: block;
   position: relative;
@@ -255,7 +252,6 @@ $uni-primary: #007aff !default;
   overflow: hidden;
   cursor: pointer;
 }
-
 .down {
   top: 3px;
 
@@ -276,7 +272,6 @@ $uni-primary: #007aff !default;
     }
   }
 }
-
 .up {
   ::after {
     content: '';

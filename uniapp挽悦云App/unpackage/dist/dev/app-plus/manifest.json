@@ -7,8 +7,8 @@
   "id": "__UNI__D8432FD",
   "name": "挽悦云",
   "version": {
-    "name": "3.2",
-    "code": 32
+    "name": "3.4",
+    "code": 34
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -117,7 +117,7 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "3.8.4",
+      "compilerVersion": "3.8.7",
       "control": "uni-v3",
       "nvueCompiler": "uni-app",
       "renderer": "auto",

@@ -1,3 +1,4 @@
+
 // #ifndef VUE3
 import Vue from 'vue'
 import App from './App'
@@ -15,20 +16,16 @@ app.$mount()
 // #ifdef VUE3
 import {createSSRApp} from 'vue'
 import App from './App.vue'
-
 export function createApp() {
     const app = createSSRApp(App)
     return {
         app
     }
 }
-
 // #endif
 
 import config from './utils/config.js'
-
 Vue.prototype.config = config
 
 import msg from './utils/msg.js'
-
 Vue.prototype.msg = msg

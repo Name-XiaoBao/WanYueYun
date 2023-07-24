@@ -3,7 +3,7 @@ var onReadyCallbacks = [];
 var isServiceReady = false;
 var onServiceReadyCallbacks = [];
 var __uniConfig = {
-    "pages": ["pages/index", "pages/File", "pages/login", "pages/Api", "pages/PersonalCenter", "pages/user/UserList", "pages/user/UpUser", "pages/file/FileList", "pages/file/AddFile", "pages/file/UpFile", "pages/cloud/CloudList", "pages/cloud/FileUpload", "pages/Feedback", "pages/About", "pages/carmi/CarmiList"],
+    "pages": ["pages/index", "pages/File", "pages/login", "pages/Api", "pages/PersonalCenter", "pages/user/UserList", "pages/user/UpUser", "pages/file/FileList", "pages/file/AddFile", "pages/file/UpFile", "pages/cloud/CloudList", "pages/cloud/FileUpload", "pages/Feedback", "pages/About", "pages/carmi/CarmiList", "pages/msg"],
     "window": {"bounce": "none", "scrollIndicator": "none"},
     "darkmode": false,
     "nvueCompiler": "uni-app",
@@ -11,7 +11,7 @@ var __uniConfig = {
     "renderer": "auto",
     "splashscreen": {"alwaysShowBeforeRender": true, "autoclose": false},
     "appname": "挽悦云",
-    "compilerVersion": "3.8.4",
+    "compilerVersion": "3.8.7",
     "entryPagePath": "pages/index",
     "networkTimeout": {"request": 60000, "connectSocket": 60000, "uploadFile": 60000, "downloadFile": 60000}
 };
@@ -136,6 +136,14 @@ var __uniRoutes = [{
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTextStyle": "black",
         "enablePullDownRefresh": true
+    }
+}, {
+    "path": "/pages/msg",
+    "meta": {},
+    "window": {
+        "navigationBarTitleText": "聊天室",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
     }
 }];
 __uniConfig.onReady = function (callback) {

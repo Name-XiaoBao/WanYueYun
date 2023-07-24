@@ -13,7 +13,6 @@ $-color-black: #000;
     outline: none;
   }
 }
-
 @mixin is-color($color) {
   @include base-style($color);
   &[loading] {
@@ -34,7 +33,6 @@ $-color-black: #000;
   }
 
 }
-
 @mixin base-plain-style($color) {
   color: $color;
   background-color: mix($-color-white, $color, 90%);
@@ -181,5 +179,4 @@ $-color-black: #000;
     @include is-plain($uni-info)
   }
 }
-
 /* #endif */

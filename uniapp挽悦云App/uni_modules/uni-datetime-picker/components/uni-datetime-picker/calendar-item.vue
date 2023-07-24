@@ -1,5 +1,5 @@
 <template>
-  <view class="uni-calendar-item__weeks-box" :class="{
+	<view class="uni-calendar-item__weeks-box" :class="{
 		'uni-calendar-item--disable':weeks.disable,
 		'uni-calendar-item--before-checked-x':weeks.beforeMultiple,
 		'uni-calendar-item--multiple': weeks.multiple,

@@ -1,5 +1,4 @@
 ## DataCheckbox 数据驱动的单选复选框
-
 > **组件名：uni-data-checkbox**
 > 代码块： `uDataCheckbox`
 
@@ -16,5 +15,4 @@
 功能中，会自动生成``uni-data-checkbox``组件并绑定好data
 
 ### [查看文档](https://uniapp.dcloud.io/component/uniui/uni-data-checkbox)
-
 #### 如使用过程中有任何问题，或者您对uni-ui有一些好的建议，欢迎加入 uni-ui 交流群：871950839 

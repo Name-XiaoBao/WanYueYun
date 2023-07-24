@@ -140,7 +140,6 @@ function obj2strStyle(obj) {
   }
   return style;
 }
-
 export default {
   name: 'uni-easyinput',
   emits: ['click', 'iconClick', 'update:modelValue', 'input', 'focus', 'blur', 'confirm', 'clear', 'eyes', 'change', 'keyboardheightchange'],

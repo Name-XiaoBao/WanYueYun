@@ -1,5 +1,4 @@
 ## List 列表
-
 > **组件名：uni-list**
 > 代码块： `uList`、`uListItem`
 > 关联组件：`uni-list-item`、`uni-badge`、`uni-icons`、`uni-list-chat`、`uni-list-ad`
@@ -20,6 +19,7 @@ uni-list-item有很多风格，uni-list-item组件通过内置的属性，满足
 下文均有样例给出。
 
 uni-list不包含下拉刷新和上拉翻页。上拉翻页另见组件：[uni-load-more](https://ext.dcloud.net.cn/plugin?id=29)
+
 
 ### 安装方式
 
@@ -95,7 +95,6 @@ uni-list不包含下拉刷新和上拉翻页。上拉翻页另见组件：[uni-l
 ```
 
 ### 开启点击反馈和右侧箭头
-
 - 设置 `clickable` 为 `true` ，则表示这是一个可点击的列表，会默认给一个点击效果，并可以监听 `click` 事件
 - 设置 `link` 属性，会自动开启点击反馈，并给列表右侧添加一个箭头
 - 设置 `to` 属性，可以跳转页面，`link` 的值表示跳转方式，如果不指定，默认为 `navigateTo`
@@ -110,8 +109,8 @@ uni-list不包含下拉刷新和上拉翻页。上拉翻页另见组件：[uni-l
 
 ```
 
-### 聊天列表示例
 
+### 聊天列表示例
 - 设置 `clickable` 为 `true` ，则表示这是一个可点击的列表，会默认给一个点击效果，并可以监听 `click` 事件
 - 设置 `link` 属性，会自动开启点击反馈，`link` 的值表示跳转方式，如果不指定，默认为 `navigateTo`
 - 设置 `to` 属性，可以跳转页面
@@ -165,6 +164,7 @@ export default {
 
 ```
 
+
 ```css
 
 .chat-custom-right {
@@ -192,6 +192,7 @@ export default {
 :-:				|:-:		|:-:		|	:-:	
 border			|Boolean	|true		|	是否显示边框
 
+
 ### ListItem Props
 
 属性名			|类型		|默认值		|	说明																					
@@ -217,6 +218,7 @@ showExtraIcon   |Boolean	|false		|	左侧是否显示扩展图标
 extraIcon		|Object		|-			|	扩展图标参数，格式为 ``{color: '#4cd964',size: '22',type: 'spinner'}``，参考 [uni-icons](https://ext.dcloud.net.cn/plugin?id=28)	
 direction		| String	|row		|	排版方向，可选值，row:水平排列;  column:垂直排列; 3个插槽是水平排还是垂直排，也受此属性控制
 
+
 #### Link Options
 
 属性名				|	说明
@@ -232,6 +234,8 @@ switchTab  	|	同 uni.switchTab()
 :-:				|:-:									|:-:				
 click			|点击 uniListItem 触发事件，需开启点击反馈	|-					
 switchChange	|点击切换 Switch 时触发，需显示 switch		|e={value:checked}	
+
+
 
 ### ListItem Slots
 
@@ -276,41 +280,41 @@ footer	|	右/下内容插槽，可完全自定义右侧内容
 
 ### ListItemChat Props
 
-属性名			|类型		|默认值		|	说明																		
-:-:				|:-:		|:-:		|	:-:	
-title 			|String		|-			|	标题
-note 			|String		|-			|	描述
-clickable		|Boolean	|false		|	是否开启点击反馈
-badgeText		|String		|-			|	数字角标内容，设置为 `dot` 将显示圆点
-badgePositon 	|String		|right		|	角标位置
-link			|String 	|navigateTo	|	是否展示右侧箭头并开启点击反馈，可选值见下表
-clickable		|Boolean	|false		|	是否开启点击反馈
-to				|String		|-			|	跳转页面地址，如填写此属性，click 会返回页面是否跳转成功	
-time			|String 	|-			|	右侧时间显示
-avatarCircle 	|Boolean 	|false		|	是否显示圆形头像
-avatar			|String 	|-			|	头像地址，avatarCircle 不填时生效
-avatarList 		|Array	 	|-			|	头像组，格式为 [{url:''}]
+     属性名			     |类型		|默认值		|	说明																		
+:--------------:|:-:		|:-:		|	:-:	
+   title 			    |String		|-			|	标题
+    note 			    |String		|-			|	描述
+  clickable		   |Boolean	|false		|	是否开启点击反馈
+  badgeText		   |String		|-			|	数字角标内容，设置为 `dot` 将显示圆点
+ badgePositon 	 |String		|right		|	角标位置
+    link			     |String 	|navigateTo	|	是否展示右侧箭头并开启点击反馈，可选值见下表
+  clickable		   |Boolean	|false		|	是否开启点击反馈
+     to				     |String		|-			|	跳转页面地址，如填写此属性，click 会返回页面是否跳转成功	
+    time			     |String 	|-			|	右侧时间显示
+ avatarCircle 	 |Boolean 	|false		|	是否显示圆形头像
+   avatar			    |String 	|-			|	头像地址，avatarCircle 不填时生效
+ avatarList 		  |Array	 	|-			|	头像组，格式为 [{url:''}]
 
 #### Link Options
 
-    属性名		     |	说明
-:------------:|	:-:
- navigateTo 	 | 	同 uni.navigateTo()
- redirectTo 	 |	同 uni.reLaunch()
-  reLaunch	   |	同 uni.reLaunch()
- switchTab  	 |	同 uni.switchTab()
+属性名		|	说明
+:-:			|	:-:
+navigateTo 	| 	同 uni.navigateTo()
+redirectTo 	|	同 uni.reLaunch()
+reLaunch	|	同 uni.reLaunch()
+switchTab  	|	同 uni.switchTab()
 
 ### ListItemChat Slots
 
- 名称	 	    |              	说明					 
-:---------|----------------------:						
- default	 | 	自定义列表右侧内容（包括时间和角标显示） 
+名称	 	|	说明					
+:-		|	:-						
+default	|	自定义列表右侧内容（包括时间和角标显示）
 
 ### ListItemChat Events
 
-  事件称名			  |       	说明						       |            	返回参数			             
-:---------:|:---------------------:|:-------------------------------:	
- @click			 | 	点击 uniListChat 触发事件	 | 	{data:{}}	，如有 to 属性，会返回页面跳转信息	 
+事件称名			|	说明						|	返回参数			
+:-:				|	:-:						|	:-:	
+@click			|	点击 uniListChat 触发事件	|	{data:{}}	，如有 to 属性，会返回页面跳转信息	
 
 ## 基于uni-list扩展的页面模板
 

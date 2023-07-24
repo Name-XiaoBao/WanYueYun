@@ -6,7 +6,6 @@
 // }
 // #ifdef APP-NVUE
 const nvueAnimation = uni.requireNativePlugin('animation')
-
 // #endif
 class MPAnimation {
     constructor(options, _this) {

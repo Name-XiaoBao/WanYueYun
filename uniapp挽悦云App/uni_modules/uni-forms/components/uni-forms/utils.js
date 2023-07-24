@@ -4,7 +4,7 @@
  * @@return {Object} 拷贝对象
  */
 export const deepCopy = (val) => {
-    return JSON.parse(JSON.stringify(val))
+	return JSON.parse(JSON.stringify(val))
 }
 /**
  * 过滤数字类型
