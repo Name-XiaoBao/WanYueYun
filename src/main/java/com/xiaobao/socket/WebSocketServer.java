@@ -29,7 +29,7 @@ public class WebSocketServer {
     private static final String HEARTBEAT_MESSAGE = "heartbeat";
     private static final long HEARTBEAT_INTERVAL = 30000;
 
-    private static final int MAX_MESSAGE_COUNT = 50;
+    private static final int MAX_MESSAGE_COUNT = 500;
     private static ConcurrentHashMap<String, List<String>> messageListMap = new ConcurrentHashMap<>();
 
     @OnOpen
