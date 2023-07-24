@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiaobao.dao.MessageDao">
-    <!--添加消息-->
-    <insert id="addMsg">
-        insert into message(api, user, message, send_msg)
-        values (#{api}, #{user}, #{message}, #{send_msg})
-    </insert>
-</mapper>
