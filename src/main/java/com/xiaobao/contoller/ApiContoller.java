@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * API管理
@@ -109,40 +110,53 @@ public class ApiContoller {
 
     /**
      * 删除用户API
+     *
      * @param username 用户名
      * @param password 密码
-     * @param id ApiID
+     * @param id       ApiID
      * @return
      */
     @RequestMapping("/deApi")
-    public Json deApi(String username,String password,int id){
+    public Json deApi(String username, String password, int id) {
         if (Ifuser(username, password)) {
             return json;
         }
-        // 获取要删除的API的名称，以便于删除其它有关联的表数据
-        String ApiName = apiService.ApiName(id).getName();
-        // 删除API里的所有用户
-        apiUserService.delapiuser(ApiName);
-        // 删除API内的所有文档
-        remoteDocumentService.Del(ApiName);
-        // 删除API里的所有文件
-        file.remove(new java.io.File(path + ApiName));
-        fileService.AllDelFile(ApiName);
-        // 删除启动次数API
-        startStatisticsDao.del(ApiName);
-        // 删除API内所有卡密
-        carmiService.delAllCarmi(ApiName);
-        // 删除API
-        int num = apiService.deapi(id);
-        if (num == 0) {
-            json.json(501, "删除失败", null);
-        } else {
-            json.json(200, "删除成功", null);
+        // 创建CompletableFuture对象
+        CompletableFuture<Json> future = CompletableFuture.supplyAsync(() -> {
+            // 获取要删除的API的名称，以便于删除其它有关联的表数据
+            String ApiName = apiService.ApiName(id).getName();
+            // 删除API里的所有用户
+            apiUserService.delapiuser(ApiName);
+            // 删除API内的所有文档
+            remoteDocumentService.Del(ApiName);
+            // 删除API里的所有文件
+            file.remove(new java.io.File(path + ApiName));
+            fileService.AllDelFile(ApiName);
+            // 删除启动次数API
+            startStatisticsDao.del(ApiName);
+            // 删除API内所有卡密
+            carmiService.delAllCarmi(ApiName);
+            // 删除API
+            int num = apiService.deapi(id);
+            if (num == 0) {
+                json.json(501, "删除失败", null);
+            } else {
+                json.json(200, "删除成功", null);
+            }
+            return json;
+        });
+
+        // 等待异步操作完成并返回结果
+        try {
+            return future.get();
+        } catch (Exception e) {
+            return json;
         }
-        return json;
     }
+
     /**
      * 判断用户是否存在以及账号密码是否正确
+     *
      * @param username 用户名
      * @param password 密码
      * @return
