@@ -30,10 +30,13 @@ public class ApiContoller {
     private StartStatisticsDao startStatisticsDao;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private CarmiService carmiService;
     @Value("${web.upload-path}")
     public String path;
-    File file= new File();
-    Json json=new Json();
+    File file = new File();
+    Json json = new Json();
+
     /**
      * 创建API
      * @param username 用户名
@@ -127,12 +130,14 @@ public class ApiContoller {
         fileService.AllDelFile(ApiName);
         // 删除启动次数API
         startStatisticsDao.del(ApiName);
+        // 删除API内所有卡密
+        carmiService.delAllCarmi(ApiName);
         // 删除API
-        int num =apiService.deapi(id);
-        if (num==0){
-            json.json(501,"删除失败",null);
-        }else {
-            json.json(200,"删除成功",null);
+        int num = apiService.deapi(id);
+        if (num == 0) {
+            json.json(501, "删除失败", null);
+        } else {
+            json.json(200, "删除成功", null);
         }
         return json;
     }

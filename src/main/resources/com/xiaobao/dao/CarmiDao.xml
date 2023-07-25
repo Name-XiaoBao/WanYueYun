@@ -37,4 +37,9 @@
         WHERE Api = #{api}
           and Carmi = #{Carmi};
     </delete>
+    <delete id="delAllCarmi">
+        DELETE
+        FROM carmi
+        WHERE Api = #{api};
+    </delete>
 </mapper>

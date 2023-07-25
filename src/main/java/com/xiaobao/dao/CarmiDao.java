@@ -65,4 +65,14 @@ public interface CarmiDao {
      * @return
      */
     int delCarmi(String api, String Carmi);
+
+    /**
+     * 删除所有卡密
+     *
+     * @param api
+     * @return
+     */
+    int delAllCarmi(String api);
+
+    ;
 }

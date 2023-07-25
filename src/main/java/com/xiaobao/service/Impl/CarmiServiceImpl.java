@@ -90,4 +90,15 @@ public class CarmiServiceImpl implements CarmiService {
     public int delCarmi(String api, String Carmi) {
         return carmiDao.delCarmi(api, Carmi);
     }
+
+    /**
+     * 删除所有卡密
+     *
+     * @param api
+     * @return
+     */
+    @Override
+    public int delAllCarmi(String api) {
+        return carmiDao.delAllCarmi(api);
+    }
 }
