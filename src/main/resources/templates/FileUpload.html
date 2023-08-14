@@ -11,14 +11,24 @@
 <body>
 <div>
     <div>
-        <input class="layui-btn" name="file" style="width: 100%" type="file" multiple="multiple" id="fileUpload">
+        <button class="layui-btn layui-btn-normal" name="file" style="width: 100%" type="file" multiple="multiple"
+                id="fileUpload">
+            <i class="layui-icon"></i>
+            点我上传文件
+        </button>
     </div>
     <div class="layui-progress layui-progress-big" style="margin: 20px;text-align: center" lay-filter="percent"
          lay-showPercent="yes">
         <div class="layui-progress-bar layui-bg-green" lay-percent="0%"></div>
     </div>
     <div style="margin-top:10px;">
-        <button id="btn" class="layui-btn" style="width: 100%">上传</button>
+        <button id="btn" class="layui-btn layui-btn-fluid layui-btn-primary">上传</button>
+    </div>
+    <div class="layui-card">
+        <div class="layui-card-header" style="color: red;">注意事项：</div>
+        <div class="layui-card-body">
+            严禁上传任何违法文件，发现后将移交公安处理！！！
+        </div>
     </div>
 </div>
 <script src="./lib/axios.min.js"></script>
