@@ -25,11 +25,12 @@
     <update id="MemberCarmi">
         UPDATE apiuser
         SET MembershipTime = CASE
-                                 WHEN MembershipTime IS NOT NULL THEN DATE_ADD(MembershipTime, INTERVAL #{Member} DAY)
-                                 ELSE DATE_ADD(CURDATE(), INTERVAL #{Member} DAY)
-            END
+        WHEN MembershipTime IS NOT NULL AND CURDATE()<= MembershipTime THEN DATE_ADD(MembershipTime, INTERVAL #{Member}
+        DAY)
+        ELSE DATE_ADD(CURDATE(), INTERVAL #{Member} DAY)
+        END
         WHERE NameApi = #{api}
-          and user = #{user};
+        and user = #{user};
     </update>
     <delete id="delCarmi">
         DELETE
