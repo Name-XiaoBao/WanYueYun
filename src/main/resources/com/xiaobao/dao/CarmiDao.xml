@@ -27,7 +27,7 @@
         SET MembershipTime = CASE
                                  WHEN CURDATE() > MembershipTime THEN DATE_ADD(CURDATE(), INTERVAL #{Member} DAY)
                                  ELSE DATE_ADD(MembershipTime, INTERVAL #{Member} DAY)
-            END
+                                 END + INTERVAL TIME_FORMAT(NOW(), '%H:%i:%s') HOUR_SECOND
         WHERE NameApi = #{api}
           AND user = #{user};
     </update>
