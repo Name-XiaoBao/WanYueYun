@@ -64,6 +64,19 @@ public class ApiUserServiceImpl implements ApiUserService {
     }
 
     /**
+     * API用户登录功能
+     *
+     * @param name
+     * @param user
+     * @param pass
+     * @return
+     */
+    @Override
+    public ApiUser login(String name, String user, String pass) {
+        return apiUserDao.login(name, user, pass);
+    }
+
+    /**
      * 查询APi用户列表
      *
      * @param NameApi

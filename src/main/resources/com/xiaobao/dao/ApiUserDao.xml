@@ -42,6 +42,14 @@
           and pass = #{pass}
           and NameApi = #{name};
     </select>
+    <!--API用户登录功能-->
+    <select id="login" resultType="com.xiaobao.model.ApiUser">
+        select *
+        from apiuser
+        where NameApi = #{name}
+          and user = #{user}
+          and pass = #{pass};
+    </select>
     <!--修改API用户密码-->
     <update id="uppass">
         UPDATE apiuser SET pass=#{pass} WHERE id=#{id};

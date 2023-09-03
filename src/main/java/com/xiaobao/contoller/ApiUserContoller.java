@@ -75,7 +75,7 @@ public class ApiUserContoller {
                 if (apiUserService.user(name,user)==null){
                     json.json(404,"该用户不存在",null);
                 }else {
-                    if (apiUserService.user_pass(user,pass)==null){
+                    if (apiUserService.login(name, user, pass) == null) {
                         json.json(501,"密码错误",null);
                     }else {
                         json.json(200,"登录成功",null);

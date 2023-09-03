@@ -40,6 +40,16 @@ public interface ApiUserService {
     ApiUser id_user_pass(int id, String user, String pass);
 
     /**
+     * API用户登录功能
+     *
+     * @param name
+     * @param user
+     * @param pass
+     * @return
+     */
+    ApiUser login(String name, String user, String pass);
+
+    /**
      * 查询APi用户列表
      *
      * @param NameApi
