@@ -37,4 +37,13 @@ public interface FileService {
      * @return
      */
     int AllDelFile(String Api);
+
+    /**
+     * 查询API是否存在该文件
+     *
+     * @param Api
+     * @param filename
+     * @return
+     */
+    Integer filename(String Api, String filename);
 }

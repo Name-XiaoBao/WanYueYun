@@ -10,6 +10,12 @@
     <select id="file" resultType="com.xiaobao.model.File">
         select * from file_url where Api=#{Api};
     </select>
+    <select id="filename" resultType="Integer">
+        select *
+        from file_url
+        where Api = #{Api}
+          and FileName = #{filename};
+    </select>
     <!--删除API文件-->
     <delete id="delFile">
         delete

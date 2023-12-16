@@ -49,7 +49,9 @@ public class File {
             if (!".mp4".equals(suffix)) {
                 fileUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + "/file/" + Api + "/" + fileName;
             }
-            fileService.addFile(Api, fileName, fileUrl);
+            if (fileService.filename(Api, fileName) == null) {
+                fileService.addFile(Api, fileName, fileUrl);
+            }
             return fileUrl;
         } catch (IOException e) {
             e.printStackTrace();

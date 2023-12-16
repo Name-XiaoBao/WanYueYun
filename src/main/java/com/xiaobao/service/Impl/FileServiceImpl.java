@@ -60,4 +60,16 @@ public class FileServiceImpl implements FileService {
     public int AllDelFile(String Api) {
         return fileDao.AllDelFile(Api);
     }
+
+    /**
+     * 查询API是否存在该文件
+     *
+     * @param Api
+     * @param filename
+     * @return
+     */
+    @Override
+    public Integer filename(String Api, String filename) {
+        return fileDao.filename(Api, filename);
+    }
 }
